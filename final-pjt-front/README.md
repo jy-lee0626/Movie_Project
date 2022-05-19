@@ -1,4 +1,4 @@
-# moving
+# final-pjt-front
 
 ## Project setup
 ```
