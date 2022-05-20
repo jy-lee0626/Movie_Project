@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Genre, Movie, MovieComment
+from .models import Movie, MovieComment
+# from .models import Genre
 
 
 
@@ -15,7 +16,7 @@ class MovieListSerializer(serializers.ModelSerializer):
 
 
 # 영화상세정보
-class MovieSerializer(serializers.Modelserializer):
+class MovieSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Movie
