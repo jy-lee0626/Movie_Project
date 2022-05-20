@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Genre, Movie, MovieComment
+from .models import Movie, MovieComment
+# from .models import Genre
 
 
 

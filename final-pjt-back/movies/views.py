@@ -2,7 +2,8 @@ import requests
 from django.shortcuts import get_object_or_404, get_list_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Movie, Genre, MovieComment
+from .models import Movie, MovieComment
+# from .models import Movie, Genre, MovieComment
 from rest_framework import serializers, status
 from .serializers import *
 from django.http import JsonResponse
