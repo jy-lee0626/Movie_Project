@@ -17,16 +17,15 @@
             <a class="nav-link" href="#">인기 영화</a>
           </li>
         </ul>
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0" v-if="login">
-          <b-avatar v-b-toggle.sidebar-footer :src="profile.profileurl" class="mr-3"></b-avatar>
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0" v-if="isLoggedIn">
           <li class="nav-item mr-2" style="line-height: 0; margin-top: 8%;">
-            <span class="text-white mb-0">{{user}} 님 환영합니다.</span>
+            <span class="text-white mb-0">{{ currentUser.username }} 님 환영합니다.</span>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" @click.native="logout" to="#">Logout</router-link>
+            <router-link class="nav-link" :to="{ name: 'logout' }">Logout</router-link>
           </li>
         </ul>
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0" v-else>
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0" v-if="!isLoggedIn">
           <li class="nav-item">
             <router-link class="nav-link" :to="{ name: 'login' }">Login</router-link>
           </li>

@@ -6,21 +6,39 @@
 
     <form @submit.prevent="signup(credentials)">
       <div>
-        <label for="username">아이디: </label>
-        <input  v-model="credentials.userid" type="text" id="userid" required/>
+        <label for="username">Username: </label>
+        <input  v-model="credentials.username" type="text" id="username" required/>
       </div>
       <div>
-        <label for="password1">비밀번호: </label>
+        <label for="password1">Password: </label>
         <input v-model="credentials.password1" type="password" id="password1" required />
       </div>
       <div>
-        <label for="password2">비밀번호 확인:</label>
+        <label for="password2">Password Confirmation:</label>
         <input v-model="credentials.password2" type="password" id="password2" required />
       </div>
-      <div>
-        <label for="username">이름: </label>
-        <input  v-model="credentials.username" type="text" id="username" required/>
+      <!-- <div>
+        <label for="password2">P:</label>
+        <input v-model="credentials.password2" type="password" id="password2" required />
       </div>
+      
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+          Default radio
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+        <label class="form-check-label" for="flexRadioDefault2">
+          Default checked radio
+        </label>
+      </div>
+      
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Default file input example</label>
+        <input class="form-control" type="file" id="formFile">
+      </div> -->
       <div>
         <button>Signup</button>
       </div>
@@ -40,10 +58,9 @@
     data() {
       return {
         credentials: {
-          userid: '',
+          username: '',
           password1: '',
           password2: '',
-          username: '',
         }
       }
     },
