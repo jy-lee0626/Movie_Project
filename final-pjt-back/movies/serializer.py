@@ -15,7 +15,7 @@ class MovieListSerializer(serializers.ModelSerializer):
 
 
 # 영화상세정보
-class MovieSerializer(serializers.Modelserializer):
+class MovieSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Movie
