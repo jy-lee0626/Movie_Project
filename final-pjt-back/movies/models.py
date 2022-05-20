@@ -1,19 +1,22 @@
 from django.db import models
 from django.conf import settings
 
-class Genre(models.Model):
-    name = models.CharField(max_length=50)
+# class Genre(models.Model):
+#     name = models.CharField(max_length=50)
 
 class Movie(models.Model):
     title = models.CharField(max_length=100)
-    release_date = models.DateTimeField(auto_now=False)
-    poster_path = models.TextField()
-    overview = models.TextField()
-    vote_count = models.IntegerField()
-    vote_average = models.FloatField()
-    popularity = models.FloatField()
+    release_date = models.DateTimeField(auto_now=False, null=True)
+    poster_path = models.TextField(null=True)
+    overview = models.TextField(null=True)
+    vote_count = models.IntegerField(null=True)
+    vote_average = models.FloatField(null=True)
+    popularity = models.FloatField(null=True)
     # related_name 굳이 만들 필요 없을 것 같아서 안만들었음
-    genres = models.ManyToManyField(Genre)
+    # genres = models.ManyToManyField(Genre)
+    genres = models.CharField(max_length=100, null=True)
+    genres_string = models.CharField(max_length=100, null=True)
+    movie_id = models.IntegerField(null=True)
 
 class MovieComment(models.Model):
     # 명세에 평점 등록, 수정, 삭제가 있어서 created_at, updated_at 추가함 ->erd에 반영해야함
