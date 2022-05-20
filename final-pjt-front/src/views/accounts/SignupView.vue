@@ -58,10 +58,9 @@
     data() {
       return {
         credentials: {
-          userid: '',
+          username: '',
           password1: '',
           password2: '',
-          username: '',
         }
       }
     },

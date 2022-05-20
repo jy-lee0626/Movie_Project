@@ -2,9 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
 
+import ArticleListView from '@/views/movies/ArticleListView.vue'
+
 import LoginView from '@/views/accounts/LoginView.vue'
 import LogoutView from '@/views/accounts/LogoutView.vue'
 import SignupView from '@/views/accounts/SignupView.vue'
+import ProfileView from '@/views/accounts/ProfileView.vue'
 import NotFound404 from '../views/accounts/NotFound404.vue'
 
 Vue.use(VueRouter)
@@ -24,6 +27,16 @@ const routes = [
     path: '/signup',
     name: 'signup',
     component: SignupView
+  },
+  {
+    path: '/profile/:username',  // /profile/neo
+    name: 'profile',
+    component: ProfileView,
+  },
+  {
+    path: '/',  // Home
+    name: 'articles',
+    component: ArticleListView
   },
   {
     path: '/404',
