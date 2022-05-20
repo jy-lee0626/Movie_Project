@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
 
-import ArticleListView from '@/views/movies/ArticleListView.vue'
+import MovieListView from '@/views/movies/MovieListView.vue'
 
 import LoginView from '@/views/accounts/LoginView.vue'
 import LogoutView from '@/views/accounts/LogoutView.vue'
@@ -35,8 +35,8 @@ const routes = [
   },
   {
     path: '/',  // Home
-    name: 'articles',
-    component: ArticleListView
+    name: 'MovieListView',
+    component: MovieListView
   },
   {
     path: '/404',
@@ -62,7 +62,7 @@ router.beforeEach((to, from, next) => {
 
   const { isLoggedIn } = store.getters
 
-  const noAuthPages = ['login', 'signup']
+  const noAuthPages = ['login', 'signup', 'MovieListView']
 
   const isAuthRequired = !noAuthPages.includes(to.name)
 

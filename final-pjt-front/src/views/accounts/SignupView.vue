@@ -6,41 +6,37 @@
 
     <form @submit.prevent="signup(credentials)">
       <div>
-        <label for="username">Username: </label>
+        <label for="username">아이디: </label>
         <input  v-model="credentials.username" type="text" id="username" required/>
       </div>
       <div>
-        <label for="password1">Password: </label>
+        <label for="password1">비밀번호: </label>
         <input v-model="credentials.password1" type="password" id="password1" required />
       </div>
       <div>
-        <label for="password2">Password Confirmation:</label>
+        <label for="password2">비밀번호 확인:</label>
         <input v-model="credentials.password2" type="password" id="password2" required />
       </div>
-      <!-- <div>
-        <label for="password2">P:</label>
-        <input v-model="credentials.password2" type="password" id="password2" required />
-      </div>
-      
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-        <label class="form-check-label" for="flexRadioDefault1">
-          Default radio
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-        <label class="form-check-label" for="flexRadioDefault2">
-          Default checked radio
-        </label>
-      </div>
-      
-      <div class="mb-3">
-        <label for="formFile" class="form-label">Default file input example</label>
-        <input class="form-control" type="file" id="formFile">
-      </div> -->
       <div>
-        <button>Signup</button>
+        <label for="firstname">이름:</label>
+        <input v-model="credentials.firstname" type="text" id="firstname" required />
+      </div>
+      
+      <div class="form-check form-check-inline">
+        <input v-model="credentials.gender" class="form-check-input" type="radio" name="Male" id="Male" value="Male">
+        <label class="form-check-label" for="Male">남자</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input v-model="credentials.gender" class="form-check-input" type="radio" name="Female" id="Female" value="Female">
+        <label class="form-check-label" for="Female">여자</label>
+      </div>
+      
+      <div class="input-group mb-3">
+        <input type="file" class="form-control" id="profile">
+        <label class="input-group-text" for="profile">Upload</label>
+      </div>
+      <div>
+        <button>가입하기</button>
       </div>
     </form>
   </div>
@@ -48,7 +44,7 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
-  import AccountErrorList from '@/components/AccountErrorList.vue'
+  import AccountErrorList from '@/components/accounts/AccountErrorList.vue'
 
   export default {
     name: 'SignupView',
@@ -61,6 +57,9 @@
           username: '',
           password1: '',
           password2: '',
+          firstname: '',
+          gender: '',
+          profile: '',
         }
       }
     },
