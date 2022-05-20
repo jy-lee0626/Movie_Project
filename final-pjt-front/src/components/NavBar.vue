@@ -17,7 +17,7 @@
             <a class="nav-link" href="#">인기 영화</a>
           </li>
         </ul>
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0" v-if="login">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0" v-if="isLoggedIn">
           <b-avatar v-b-toggle.sidebar-footer :src="profile.profileurl" class="mr-3"></b-avatar>
           <li class="nav-item mr-2" style="line-height: 0; margin-top: 8%;">
             <span class="text-white mb-0">{{user}} 님 환영합니다.</span>
