@@ -8,7 +8,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <router-link class="nav-link" :to="{ name: 'HomeIndex' }">Home</router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">현재 상영작</a>
@@ -28,10 +28,10 @@
         </ul>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0" v-else>
           <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'Login' }">Login</router-link>
+            <router-link class="nav-link" :to="{ name: 'login' }">Login</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'Signup' }">SignUp</router-link>
+            <router-link class="nav-link" :to="{ name: 'signup' }">SignUp</router-link>
           </li>
         </ul>
       </div>
@@ -40,10 +40,17 @@
 </template>
 
 <script>
-export default {
-  name: 'NavBar',
-  
-}
+  import { mapGetters } from 'vuex'
+
+  export default {
+    name: 'NavBar',
+    computed: {
+      ...mapGetters(['isLoggedIn', 'currentUser']),
+      username() {
+        return this.currentUser.username ? this.currentUser.username : 'guest'
+      },
+    },
+  }
 </script>
 
 <style>
