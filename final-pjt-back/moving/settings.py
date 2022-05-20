@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # third party
     'django_extensions',
     'rest_framework',
+    'corsheaders',
 
     # django
     'django.contrib.admin',
@@ -92,6 +93,8 @@ JWT_AUTH = {
 REST_USE_JWT = True
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
