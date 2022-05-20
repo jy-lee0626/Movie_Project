@@ -4,7 +4,7 @@ from movies.models import Movie
 
 # Create your models here.
 class Review(models.Model):
-    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, db_table='community_review_like', related_name='like_reviews', null=True)
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, db_table='community_review_like', related_name='like_reviews')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
