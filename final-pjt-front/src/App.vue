@@ -1,21 +1,28 @@
 <template>
   <div id="app">
-    <NavBar/>
-    <router-view/>
+    <nav-bar></nav-bar>
+    <hr />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import NavBar from '@/NavBar'
+  import NavBar from '@/components/NavBar.vue'
 
-export default {
-  name: 'App',
-  components: {
-    NavBar
-  },
-}
+  import { mapActions } from 'vuex'
 
+  export default {
+    name: 'App',
+    components: { NavBar },
+    methods: {
+      ...mapActions(['fetchCurrentUser'])
+    },
+    created() {
+      this.fetchCurrentUser()
+    }
+  }
 </script>
+
 
 <style>
 #app {
