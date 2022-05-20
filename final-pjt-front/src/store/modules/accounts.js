@@ -46,7 +46,7 @@ export default {
           const token = res.data.key
           dispatch('saveToken', token)
           dispatch('fetchCurrentUser')
-          router.push({ name: 'articles' })
+          router.push({ name: 'MovieListView' })
         })
         .catch(err => {
           console.error(err.response.data)
@@ -64,7 +64,7 @@ export default {
           const token = res.data.key
           dispatch('saveToken', token)
           dispatch('fetchCurrentUser')
-          router.push({ name: 'articles' })
+          router.push({ name: 'MovieListView' })
         })
         .catch(err => {
           console.error(err.response.data)
@@ -73,19 +73,20 @@ export default {
     },
 
     logout({ getters, dispatch }) {
-      axios({
+      if (confirm('정말 로그아웃 하시겠습니까?')) {
+        axios({
         url: drf.accounts.logout(),
         method: 'post',
-        headers: getters.authHeader,
-      })
-        .then(() => {
-          dispatch('removeToken')
-          alert('logout!')
-          router.push({ name: 'login' })
+          headers: getters.authHeader,
         })
-        .error(err => {
-          console.error(err.response)
-        })
+          .then(() => {
+            dispatch('removeToken')
+            router.push({ name: 'login' })
+          })
+          .error(err => {
+            console.error(err.response)
+          })
+      }
     },
 
     fetchCurrentUser({ commit, getters, dispatch }) {
