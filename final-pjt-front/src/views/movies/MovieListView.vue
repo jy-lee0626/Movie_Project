@@ -1,15 +1,14 @@
 <template>
   <div>
     <div>MovieListView</div>
-    <ul>
-      <li v-for="(nowplay, idx) in nowplaying" :key="idx">
-        {{ nowplay }}
-        <span>hi</span>
-      </li>
-    </ul>
-    <div v-if="!isnowplaying">영화 없어</div>
-    <span>hi</span>
-    <a href="http://127.0.0.1:8000/api/v1/movies/nowplaying/">dd</a>
+    <button @click="fetchNowplaying">눌러</button>
+    <div v-for="nowplay in nowplaying" :key="nowplay.id" class="card" style="width: 18rem;">
+      <img :src="`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${nowplay.poster_path}`" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"> {{ nowplay.title }}</h5>
+        <a href="#" class="btn btn-primary">Detail</a>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -24,7 +23,7 @@ export default {
   methods: {
     ...mapActions(['fetchNowplaying'])
   },
-  create() {
+  beforeCreate() {
     this.fetchNowplaying()
   },
 }
