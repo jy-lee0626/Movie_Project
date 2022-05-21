@@ -23,5 +23,8 @@ export default {
   },
   movies: {
     movies: () => HOST + MOVIES,
+  },
+  nowplaying: {
+    nowplaying: () => HOST + MOVIES + 'nowplaying/',
   }
 }
