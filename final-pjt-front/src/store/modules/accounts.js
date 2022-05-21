@@ -83,7 +83,7 @@ export default {
             dispatch('removeToken')
             router.push({ name: 'login' })
           })
-          .error(err => {
+          .catch(err => {
             console.error(err.response)
           })
       }
