@@ -18,7 +18,7 @@
       if (this.isLoggedIn) {
         this.logout()
       } else {
-        alert('잘못된 접근')
+        alert('당신은 악성 유저!')
         this.$router.back()
       }
     },

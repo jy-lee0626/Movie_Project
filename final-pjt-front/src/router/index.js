@@ -2,9 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
 
+import MovieListView from '@/views/movies/MovieListView.vue'
+
 import LoginView from '@/views/accounts/LoginView.vue'
 import LogoutView from '@/views/accounts/LogoutView.vue'
 import SignupView from '@/views/accounts/SignupView.vue'
+import ProfileView from '@/views/accounts/ProfileView.vue'
 import NotFound404 from '../views/accounts/NotFound404.vue'
 
 Vue.use(VueRouter)
@@ -24,6 +27,16 @@ const routes = [
     path: '/signup',
     name: 'signup',
     component: SignupView
+  },
+  {
+    path: '/profile/:username',  // /profile/neo
+    name: 'profile',
+    component: ProfileView,
+  },
+  {
+    path: '/',  // Home
+    name: 'MovieListView',
+    component: MovieListView
   },
   {
     path: '/404',
@@ -49,7 +62,7 @@ router.beforeEach((to, from, next) => {
 
   const { isLoggedIn } = store.getters
 
-  const noAuthPages = ['login', 'signup']
+  const noAuthPages = ['login', 'signup', 'MovieListView']
 
   const isAuthRequired = !noAuthPages.includes(to.name)
 
