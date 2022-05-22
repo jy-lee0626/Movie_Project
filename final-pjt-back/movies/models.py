@@ -15,7 +15,7 @@ class Movie(models.Model):
     # related_name 굳이 만들 필요 없을 것 같아서 안만들었음
     # genres = models.ManyToManyField(Genre)
     genres = models.CharField(max_length=100, null=True)
-    genres_string = models.CharField(max_length=100, null=True)
+    # genres_string = models.CharField(max_length=100, null=True)
     movie_id = models.IntegerField(null=True)
 
 class MovieComment(models.Model):
