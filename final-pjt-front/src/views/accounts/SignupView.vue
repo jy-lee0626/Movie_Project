@@ -19,7 +19,7 @@
       </div>
       <div>
         <label for="firstname">이름:</label>
-        <input v-model="credentials.firstname" type="text" id="firstname" required />
+        <input v-model="credentials.first_name" type="text" id="first_name" required />
       </div>
       
       <div class="form-check form-check-inline">
@@ -57,7 +57,7 @@
           username: '',
           password1: '',
           password2: '',
-          firstname: '',
+          first_name: '',
           gender: '',
           profile: '',
         }
