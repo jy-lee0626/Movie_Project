@@ -7,6 +7,7 @@
 
 <script>
 import NowPlayingList from '@/components/movies/NowPlayingList.vue'
+
 export default {
   name: "TestView",
   components: {
