@@ -2,7 +2,7 @@
   <div id="app">
     <nav-bar></nav-bar>
     <br/>
-    <span>App.vue</span>
+    <div>App</div>
     <router-view></router-view>
   </div>
 </template>

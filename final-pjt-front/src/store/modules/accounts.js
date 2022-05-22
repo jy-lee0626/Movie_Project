@@ -65,7 +65,6 @@ export default {
           dispatch('saveToken', token)
           dispatch('fetchCurrentUser')
           alert('회원가입 성공!!')
-          console.log(credentials)
           router.push({ name: 'MovieListView' })
         })
         .catch(err => {

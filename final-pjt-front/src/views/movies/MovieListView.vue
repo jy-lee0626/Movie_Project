@@ -1,16 +1,17 @@
 <template>
   <div>
-    <div>Home</div>
-    <div 
-    v-for="nowplay in nowplaying" :key="nowplay.id"
-      class="flex flex-shrink-0 justify-center items-center w-1/2 max-w-sm mx-auto my-8"
-    >
-      <div
-        :style="{
-          backgroundImage: `url(https://www.themoviedb.org/t/p/w300_and_h450_bestv2${nowplay.poster_path})`
-        }"
-        class="bg-gray-300 h-64 w-full rounded-lg shadow-md bg-cover bg-center"
-      ></div>
+    <div>HOME</div>
+    <div class="container">
+      <div class="row">
+        <div class="col-3 my-3" v-for="nowplay in nowplaying" :key="nowplay.id">
+          <div class="card" style="width: 18rem;">
+            <img :src="`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${nowplay.poster_path}`" class="card-img-top" alt="...">
+            <div class="card-body">
+              <a href="#" class="btn btn-primary">Detail</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -31,3 +32,7 @@ export default {
   },
 }
 </script>
+
+<style>
+
+</style>

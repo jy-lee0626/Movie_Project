@@ -5,11 +5,14 @@ import store from '../store'
 import MovieListView from '@/views/movies/MovieListView.vue' //Home
 import NowPlayingListView from '@/views/movies/NowPlayingListView.vue'
 
+import TestView from '@/views/movies/TestView.vue'
+
 import LoginView from '@/views/accounts/LoginView.vue'
 import LogoutView from '@/views/accounts/LogoutView.vue'
 import SignupView from '@/views/accounts/SignupView.vue'
 import ProfileView from '@/views/accounts/ProfileView.vue'
 import NotFound404 from '../views/accounts/NotFound404.vue'
+
 
 Vue.use(VueRouter)
 
@@ -43,6 +46,11 @@ const routes = [
     path: '/nowplaying',
     name: 'nowplaying',
     component: NowPlayingListView
+  },
+  {
+    path: '/test',
+    name: 'test',
+    component: TestView
   },
   {
     path: '/404',
