@@ -22,7 +22,9 @@ def now_playing_movies(request):
             results = requests.get('https://api.themoviedb.org/3/movie/now_playing?api_key=03f03c44041dd5b89d9605ef7395f631&language=ko-KR&page=1')
             results = results.json().get('results')
             for result in results:
-                now_movie = Movie(title=result.get('title'), overview=result.get('overview'), release_date=result.get('release_date'), poster_path=result.get('poster_path'),genres=result.get('genre_ids'), vote_average=result.get('vote_average'), vote_count=result.get('vote_count'), movie_id=result.get('id'))
+                nowplaying_ids = result.get('id')
+                nowplaying_detail = requests.get(f'https://api.themoviedb.org/3/movie/{nowplaying_ids}?api_key=03f03c44041dd5b89d9605ef7395f631&language=ko-KR').json()
+                now_movie = Movie(title=nowplaying_detail.get('title'), overview=nowplaying_detail.get('overview'), release_date=nowplaying_detail.get('release_date'), poster_path=nowplaying_detail.get('poster_path'),genres=nowplaying_detail.get('genres'), vote_average=nowplaying_detail.get('vote_average'), vote_count=nowplaying_detail.get('vote_count'), movie_id=nowplaying_detail.get('id'), popularity=nowplaying_detail.get('popularity'))
                 if not Movie.objects.filter(title=now_movie.title):
                     now_movie.save()
             movie = get_list_or_404(Movie)
