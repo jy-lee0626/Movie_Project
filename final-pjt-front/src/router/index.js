@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
 
-import MovieListView from '@/views/movies/MovieListView.vue'
+import MovieListView from '@/views/movies/MovieListView.vue' //Home
+import NowPlayingListView from '@/views/movies/NowPlayingListView.vue'
 
 import LoginView from '@/views/accounts/LoginView.vue'
 import LogoutView from '@/views/accounts/LogoutView.vue'
@@ -31,12 +32,17 @@ const routes = [
   {
     path: '/profile/:username',  // /profile/neo
     name: 'profile',
-    component: ProfileView,
+    component: ProfileView
   },
   {
     path: '/',  // Home
     name: 'MovieListView',
     component: MovieListView
+  },
+  {
+    path: '/nowplaying',
+    name: 'nowplaying',
+    component: NowPlayingListView
   },
   {
     path: '/404',

@@ -11,7 +11,7 @@
             <router-link class="nav-link" :to="{ name: 'MovieListView' }">Home</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">현재 상영작</a>
+            <router-link class="nav-link" :to="{ name: 'nowplaying' }">현재 상영작</router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">인기 영화</a>
