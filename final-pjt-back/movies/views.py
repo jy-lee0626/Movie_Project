@@ -23,7 +23,7 @@ def now_playing_movies(request):
             for result in results:
                 nowplaying_ids = result.get('id')
                 nowplaying_detail = requests.get(f'https://api.themoviedb.org/3/movie/{nowplaying_ids}?api_key=03f03c44041dd5b89d9605ef7395f631&language=ko-KR').json()
-                now_movie = Movie(title=nowplaying_detail.get('title'), overview=nowplaying_detail.get('overview'), release_date=nowplaying_detail.get('release_date'), poster_path=nowplaying_detail.get('poster_path'),genres=nowplaying_detail.get('genres'), vote_average=nowplaying_detail.get('vote_average'), vote_count=nowplaying_detail.get('vote_count'), movie_id=nowplaying_detail.get('id'), popularity=nowplaying_detail.get('popularity'))
+                now_movie = Movie(title=nowplaying_detail.get('title'), overview=nowplaying_detail.get('overview'), release_date=nowplaying_detail.get('release_date'), poster_path=nowplaying_detail.get('poster_path'),genres=nowplaying_detail.get('genres'), vote_average=nowplaying_detail.get('vote_average'), vote_count=nowplaying_detail.get('vote_count'), movie_num=nowplaying_detail.get('id'), popularity=nowplaying_detail.get('popularity'))
                 if not Movie.objects.filter(title=now_movie.title):
                     now_movie.save()
             movie = get_list_or_404(Movie)
@@ -35,12 +35,33 @@ def now_playing_movies(request):
 
 
 # client에서 영화 id 보내주면 해당하는 영화의 detail정보 db에 저장 안하고 json파일 반환
+# @api_view(['GET'])
+# def movie_detail(request, movie_num):
+#     if request.method == 'GET':
+#         result = requests.get(f'https://api.themoviedb.org/3/movie/{movie_num}?api_key=03f03c44041dd5b89d9605ef7395f631&language=ko-KR')
+#         result = result.json()
+#         return JsonResponse(result, status=status.HTTP_200_OK, safe=False)
 @api_view(['GET'])
-def movie_detail(request, movie_id):
+def movie_detail(request, movie_num):
     if request.method == 'GET':
-        result = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}?api_key=03f03c44041dd5b89d9605ef7395f631&language=ko-KR')
-        result = result.json()
-        return JsonResponse(result, status=status.HTTP_200_OK, safe=False)
+        if Movie.objects.filter(movie_num=movie_num).exists():
+            print(True)
+            movie = get_object_or_404(Movie, movie_num=movie_num)
+            serializer = MovieSerializer(movie)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            print(False)
+            result = requests.get(f'https://api.themoviedb.org/3/movie/{movie_num}?api_key=03f03c44041dd5b89d9605ef7395f631&language=ko-KR')
+            result = result.json()
+            detail = Movie(title=result.get('title'), overview=result.get('overview'), release_date=result.get('release_date'), poster_path=result.get('poster_path'),genres=result.get('genres'), vote_average=result.get('vote_average'), vote_count=result.get('vote_count'), movie_num=result.get('id'), popularity=result.get('popularity'))
+            detail.save()
+            movie = get_object_or_404(Movie, movie_num=movie_num)
+            serializer = MovieSerializer(movie)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+
+
 
 
 
@@ -94,8 +115,8 @@ def comment_detail(request, comment_pk):
 
 
 @api_view(['POST'])
-def comment_create(request, movie_id):
-    movie = get_object_or_404(Movie, pk=movie_id)
+def comment_create(request, movie_num):
+    movie = get_object_or_404(Movie, pk=movie_num)
     serializer = MovieCommentSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
         serializer.save(movie=movie)
