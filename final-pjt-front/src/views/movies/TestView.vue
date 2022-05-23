@@ -1,20 +1,17 @@
 <template>
   <div>
     <div>TestVue</div>
-    <now-playing-list></now-playing-list>
-    <up-coming></up-coming>
+    <testvue></testvue>
   </div>
 </template>
 
 <script>
-import NowPlayingList from '@/components/movies/NowPlayingList.vue'
-import UpComing from '@/components/movies/UpComing.vue'
+import Testvue from '@/components/movies/TestVue.vue'
 
 export default {
   name: "TestView",
   components: {
-    NowPlayingList,
-    UpComing,
+    Testvue
   }
 }
 </script>
