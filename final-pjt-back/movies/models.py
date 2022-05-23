@@ -3,7 +3,7 @@ from django.conf import settings
 
 class Movie(models.Model):
     title = models.CharField(max_length=100)
-    release_date = models.DateTimeField(auto_now=False, null=True)
+    release_date = models.DateField(auto_now=False, null=True)
     poster_path = models.TextField(null=True)
     overview = models.TextField(null=True)
     vote_count = models.IntegerField(null=True)
