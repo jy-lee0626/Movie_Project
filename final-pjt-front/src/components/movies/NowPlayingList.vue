@@ -2,15 +2,15 @@
   <div>
     <div class="row">
       <div class="header">
-        <h3 class="title">현재 상영작</h3>
+        <h3 class="title mt-5">현재 상영작</h3>
         <div class="progress-bar"></div>
       </div>
-      <div class="container">
+      <div class="container mt-3">
         <button class="handle left-handle">
           <div class="text">&#8249;</div>
         </button>
         <div class="slider">
-          <img v-for="nowplay in nowplaying" :key="nowplay.id" :src="`https://www.themoviedb.org/t/p/w220_and_h330_bestv2${nowplay.poster_path}`" alt="포스터 없음">
+          <img v-for="nowplay in nowplaying.slice(0, 20)" :key="nowplay.id" :src="`https://www.themoviedb.org/t/p/w220_and_h330_bestv2${nowplay.poster_path}`" alt="포스터 없음">
         </div>
         <button class="handle right-handle">
           <div class="text">&#8250;</div>
@@ -21,7 +21,8 @@
 </template>
 
 <script>
-import js from '../../assets/js/home.js'
+import '../../assets/js/home.js'
+// import js from 'vuex'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
@@ -33,8 +34,7 @@ export default {
     ...mapActions(['fetchNowplaying'])
   },
   created() {
-    this.fetchNowplaying(),
-    js.calculateProgressBar()
+    this.fetchNowplaying()
   },
 }
 </script>
@@ -60,7 +60,7 @@ body {
 }
 
 .slider {
-  --items-per-screen: 8;
+  --items-per-screen: 9;
   --slider-index: 0;
   display: flex;
   flex-grow: 1;
