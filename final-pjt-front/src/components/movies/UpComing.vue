@@ -3,7 +3,7 @@
     <div class="row_css">
       <div class="header_css">
         <h3 class="title_css mt-5">개봉 예정</h3>
-        <div class="progress-bar_css mt-5"></div>
+        <div class="progress-bar_css mt-5 pt-5"></div>
       </div>
       <div class="container_css mt-3">
         <button class="handle left-handle">

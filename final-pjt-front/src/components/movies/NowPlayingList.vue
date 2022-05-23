@@ -3,7 +3,7 @@
     <div class="row_css">
       <div class="header_css">
         <h3 class="title_css mt-5">현재 상영작</h3>
-        <div class="progress-bar_css mt-5"></div>
+        <div class="progress-bar_css mt-5 pt-5"></div>
       </div>
       <div class="container_css mt-3">
         <button class="handle left-handle">
@@ -124,7 +124,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: .5rem calc(var(--img-gap) * 2 + var(--handle-size));
-  align-items: center;
+  align-items: bottom;
 }
 
 .title_css {
@@ -138,9 +138,9 @@ body {
 }
 
 .progress-item {
-  flex: 0 0 1.5rem;
+  flex: 0 0 1.rem;
   min-width: 1.5rem;
-  height: .25rem;
+  height: .15rem;
   background-color: rgba(255, 255, 255, .5);
 }
 
