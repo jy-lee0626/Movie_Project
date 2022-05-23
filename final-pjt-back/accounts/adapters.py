@@ -10,7 +10,6 @@ class CustomAccountAdapter(DefaultAccountAdapter):
         # 추가 저장 필드: profile_image
         gender = data.get("gender")
         first_name = request.data.get("first_name")
-        print(form)
         setattr(user, "gender", gender)
         setattr(user, "first_name", first_name)
         
