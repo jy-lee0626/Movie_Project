@@ -1,16 +1,16 @@
 <template>
   <div>
-    <div class="row">
-      <div class="header">
-        <h3 class="title mt-5">현재 상영작</h3>
-        <div class="progress-bar"></div>
+    <div class="row_css">
+      <div class="header_css">
+        <h3 class="title_css mt-5">현재 상영작</h3>
+        <div class="progress-bar_css mt-5"></div>
       </div>
-      <div class="container mt-3">
+      <div class="container_css mt-3">
         <button class="handle left-handle">
           <div class="text">&#8249;</div>
         </button>
         <div class="slider">
-          <img v-for="nowplay in nowplaying.slice(0, 20)" :key="nowplay.id" :src="`https://www.themoviedb.org/t/p/w220_and_h330_bestv2${nowplay.poster_path}`" alt="포스터 없음">
+          <img class="img__item" v-for="nowplay in nowplaying.slice(0, 20)" :key="nowplay.id" :src="`https://www.themoviedb.org/t/p/w220_and_h330_bestv2${nowplay.poster_path}`" alt="포스터 없음">
         </div>
         <button class="handle right-handle">
           <div class="text">&#8250;</div>
@@ -53,7 +53,7 @@ body {
   margin: 0;
 }
 
-.container {
+.container_css {
   display: flex;
   justify-content: center;
   overflow: hidden;
@@ -120,20 +120,20 @@ body {
   transform: scale(1.2);
 }
 
-.header {
+.header_css {
   display: flex;
   justify-content: space-between;
   padding: .5rem calc(var(--img-gap) * 2 + var(--handle-size));
   align-items: center;
 }
 
-.title {
+.title_css {
   font-size: 2rem;
   margin: 0;
 }
 
-.progress-bar {
-  display: hidden;
+.progress-bar_css {
+  display: flex;
   gap: .25rem;
 }
 
@@ -146,6 +146,16 @@ body {
 
 .progress-item.active {
   background-color: rgba(255, 255, 255, .9);
+}
+
+.img__item {
+  padding: 0 2px;
+  transition: 250ms all;
+}
+
+.img__item:hover {
+  margin: 0 40px;
+  transform: scale(1.2);
 }
 
 @media (max-width: 1000px) {
