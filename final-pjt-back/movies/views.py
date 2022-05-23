@@ -23,12 +23,14 @@ def now_playing_movies(request):
             for result in results:
                 nowplaying_ids = result.get('id')
                 nowplaying_detail = requests.get(f'https://api.themoviedb.org/3/movie/{nowplaying_ids}?api_key=03f03c44041dd5b89d9605ef7395f631&language=ko-KR').json()
-                now_movie = Movie(title=nowplaying_detail.get('title'), overview=nowplaying_detail.get('overview'), release_date=nowplaying_detail.get('release_date'), poster_path=nowplaying_detail.get('poster_path'),genres=nowplaying_detail.get('genres'), vote_average=nowplaying_detail.get('vote_average'), vote_count=nowplaying_detail.get('vote_count'), movie_num=nowplaying_detail.get('id'), popularity=nowplaying_detail.get('popularity'))
+                genres_list = nowplaying_detail.get('genres')
+                genres_str = ' '.join(list(g['name'] for g in genres_list))
+                now_movie = Movie(title=nowplaying_detail.get('title'), overview=nowplaying_detail.get('overview'), release_date=nowplaying_detail.get('release_date'), poster_path=nowplaying_detail.get('poster_path'),genres=genres_str, vote_average=nowplaying_detail.get('vote_average'), vote_count=nowplaying_detail.get('vote_count'), movie_num=nowplaying_detail.get('id'), popularity=nowplaying_detail.get('popularity'))
                 if not Movie.objects.filter(title=now_movie.title):
                     now_movie.save()
             movie = get_list_or_404(Movie)
             serializer = MovieListSerializer(movie, many=True)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 
@@ -53,7 +55,9 @@ def movie_detail(request, movie_num):
             print(False)
             result = requests.get(f'https://api.themoviedb.org/3/movie/{movie_num}?api_key=03f03c44041dd5b89d9605ef7395f631&language=ko-KR')
             result = result.json()
-            detail = Movie(title=result.get('title'), overview=result.get('overview'), release_date=result.get('release_date'), poster_path=result.get('poster_path'),genres=result.get('genres'), vote_average=result.get('vote_average'), vote_count=result.get('vote_count'), movie_num=result.get('id'), popularity=result.get('popularity'))
+            genres_list = result.get('genres')
+            genres_str = ' '.join(list(g['name'] for g in genres_list))
+            detail = Movie(title=result.get('title'), overview=result.get('overview'), release_date=result.get('release_date'), poster_path=result.get('poster_path'),genres=genres_str, vote_average=result.get('vote_average'), vote_count=result.get('vote_count'), movie_num=result.get('id'), popularity=result.get('popularity'))
             detail.save()
             movie = get_object_or_404(Movie, movie_num=movie_num)
             serializer = MovieSerializer(movie)
