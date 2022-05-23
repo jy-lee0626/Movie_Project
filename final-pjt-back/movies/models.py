@@ -12,7 +12,8 @@ class Movie(models.Model):
     genres = models.CharField(max_length=100, null=True)
     movie_num = models.IntegerField(null=True)
     movie_like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies')
-
+    like_count = models.IntegerField(default=0)
+    
 
 class MovieComment(models.Model):
     movie_num = models.IntegerField(null=False)

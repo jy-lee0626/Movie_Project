@@ -11,7 +11,7 @@ class User(AbstractUser):
     
     # profile_image=models.ImageField(null=True)
     gender = models.CharField(("Gender"), max_length=80, choices=GENDER_CHOICES, default=('Male'))
-    favorite_movies = models.ManyToManyField("movies.Movie", max_length=5) # 관심 영화를 최대 5개 까지 저정하려면 어떻게 해야할까?
+    # favorite_movies = models.ManyToManyField("movies.Movie", max_length=5) # 관심 영화를 최대 5개 까지 저정하려면 어떻게 해야할까?
 
     def __str__(self):
         return self.username
