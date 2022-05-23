@@ -101,3 +101,42 @@ def comment_create(request, movie_id):
     if serializer.is_valid(raise_exception=True):
         serializer.save(movie=movie)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+
+# ==================================================================
+
+@api_view(['POST'])
+def like_movie(request, movie_num):
+    movie = get_object_or_404(Movie, movie_num=movie_num)
+    user = request.user
+    if movie.movie_like.filter(pk=user.pk).exists():
+        movie.movie_like.remove(user)
+        movie.like_count -= 1
+        movie.save()
+        context = {
+            'unliked': f'{user} unliked movie {movie.title}'
+        }
+        return Response(context)
+    else:
+        movie.movie_like.add(user)
+        movie.like_count += 1
+        movie.save()
+        serializer = MovieSerializer(movie)
+        context = {
+            'liked': f'{user} liked movie {movie.title}'
+        }
+        return Response(context)
+
+
+@api_view(['GET'])
+def my_popular_movie(request):
+    movies = Movie.objects.order_by('-like_count')[:10]
+    serializer = MovieListSerializer(movies, many=True)
+    return Response(serializer.data)
+
+
+# @api_view(['GET'])
+# def my_recommend_movie(request):
+#     user = request.user
+#     for other in movies

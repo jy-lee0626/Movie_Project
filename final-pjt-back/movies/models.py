@@ -17,6 +17,7 @@ class Movie(models.Model):
     genres = models.CharField(max_length=100, null=True)
     # genres_string = models.CharField(max_length=100, null=True)
     movie_id = models.IntegerField(null=True)
+    like_count = models.IntegerField(default=0)
 
 class MovieComment(models.Model):
     # 명세에 평점 등록, 수정, 삭제가 있어서 created_at, updated_at 추가함 ->erd에 반영해야함

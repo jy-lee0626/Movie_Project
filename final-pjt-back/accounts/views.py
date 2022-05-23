@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .serializers import ProfileSerializer
+from .serializers import ProfileSerializer, UserSerializer
 
 User = get_user_model()
 
@@ -13,5 +13,23 @@ def profile(request, username):
     user = get_object_or_404(User, username=username)
     serializer = ProfileSerializer(user)
     return Response(serializer.data)
-    
+
+
+
+@api_view(['GET'])
+def user_match(request, username):
+    user = get_object_or_404(User, username=username)
+    all_users = User.objects.all()
+    movie_count = 0
+    match = None
+    for other in all_users:
+        cnt = 0
+        for movie in user.like_movies:
+            if movie.movie_like.filter(pk=other.pk):
+                cnt += 1
+        if cnt >= movie_count: 
+            movie_count = cnt
+            match = other
+    serializer = UserSerializer(match)
+    return Response(serializer.data) 
 
