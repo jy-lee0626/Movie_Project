@@ -4,6 +4,8 @@ const ACCOUNTS = 'accounts/'
 const ARTICLES = 'articles/'
 const COMMENTS = 'comments/'
 const MOVIES = 'movies/'
+const BASE_URL = 'https://api.themoviedb.org/3/'
+const KEY = '?api_key=03f03c44041dd5b89d9605ef7395f631&language=ko-KR&page=1'
 
 export default {
   accounts: {
@@ -28,6 +30,12 @@ export default {
     nowplaying: () => HOST + MOVIES + 'nowplaying/',
   },
   upcoming: {
-    upcoming: () => 'https://api.themoviedb.org/3/movie/upcoming?api_key=03f03c44041dd5b89d9605ef7395f631&language=ko-KR&page=1',
+    upcoming: () => BASE_URL + 'movie/upcoming' + KEY
+  },
+  popular: {
+    popular: () => BASE_URL + 'movie/popular' + KEY
+  },
+  tvshow: {
+    tvshow: () => BASE_URL + 'tv/popular' + KEY
   }
 }

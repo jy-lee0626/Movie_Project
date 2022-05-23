@@ -140,7 +140,7 @@ body {
 .progress-item {
   flex: 0 0 1.5rem;
   min-width: 1.5rem;
-  height: .5rem;
+  height: .25rem;
   background-color: rgba(255, 255, 255, .5);
 }
 
@@ -155,6 +155,7 @@ body {
 
 .img__item:hover {
   margin: 0 40px;
+  transition-delay: 0.4s;
   transform: scale(1.2);
 }
 
@@ -170,8 +171,4 @@ body {
   }
 }
 
-body {
-  background-color: rgba(250,227,217,1);
-  color: white;
-}
 </style>
