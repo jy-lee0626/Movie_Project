@@ -31,10 +31,10 @@
         <label class="form-check-label" for="Female">여자</label>
       </div>
       
-      <div class="input-group mb-3">
+      <!-- <div class="input-group mb-3">
         <input type="file" class="form-control" id="profile">
         <label class="input-group-text" for="profile">Upload</label>
-      </div>
+      </div> -->
       <div>
         <button>가입하기</button>
       </div>
