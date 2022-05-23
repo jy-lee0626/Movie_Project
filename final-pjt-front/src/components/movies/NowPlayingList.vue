@@ -5,15 +5,15 @@
         <h3 class="title_css mt-5">현재 상영작</h3>
         <div class="progress-bar_css mt-5 pt-5"></div>
       </div>
-      <div class="container_css mt-3">
+      <div class="container_css">
         <button class="handle left-handle">
-          <div class="text">&#8249;</div>
+          <div class="text_css">&#8249;</div>
         </button>
         <div class="slider">
           <img class="img__item" v-for="nowplay in nowplaying.slice(0, 20)" :key="nowplay.id" :src="`https://www.themoviedb.org/t/p/w220_and_h330_bestv2${nowplay.poster_path}`" alt="포스터 없음">
         </div>
         <button class="handle right-handle">
-          <div class="text">&#8250;</div>
+          <div class="text_css">&#8250;</div>
         </button>
       </div>
     </div>
@@ -56,6 +56,7 @@ body {
 .container_css {
   display: flex;
   justify-content: center;
+  padding: 2rem 0px 2rem 0px;
   overflow: hidden;
 }
 
@@ -97,13 +98,21 @@ body {
 }
 
 .left-handle {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 60px;
+  font-size: 50px;
+  text-align: center;
+  margin-top: 8rem;
 }
 
 .right-handle {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 60px;
+  font-size: 50px;
+  text-align: center;
+  margin-top: 8rem;
 }
 
 .handle:hover,
@@ -111,8 +120,9 @@ body {
   background-color: rgba(255, 255, 255, .5);
 }
 
-.text {
+.text_css {
   transition: transform 150ms ease-in-out;
+  padding-bottom: 0.3rem;
 }
 
 .handle:hover .text,
