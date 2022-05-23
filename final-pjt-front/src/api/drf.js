@@ -26,5 +26,8 @@ export default {
   },
   nowplaying: {
     nowplaying: () => HOST + MOVIES + 'nowplaying/',
+  },
+  upcoming: {
+    upcoming: () => 'https://api.themoviedb.org/3/movie/upcoming?api_key=03f03c44041dd5b89d9605ef7395f631&language=ko-KR&page=1',
   }
 }
