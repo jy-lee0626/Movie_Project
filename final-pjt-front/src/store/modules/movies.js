@@ -5,6 +5,9 @@ import drf from '@/api/drf'
 import _ from 'lodash'
 import router from '@/router'
 
+const YOUTUBE_URL = 'https://www.googleapis.com/youtube/v3/search'
+const YOUTUBE_KEY = 'AIzaSyB61ki4KeefQptF3Atc9TF1JyOiK4CQ_Ms'
+
 export default {
   state: {
     nowplaying: [],
@@ -13,6 +16,7 @@ export default {
     tvshow: [],
     moviedetail: {},
     searchdata: [],
+    youtubeVideos: [],
   },
 
   getters: {
@@ -24,6 +28,7 @@ export default {
     movieDetail: state => state.moviedetail,
     searchdata: state => state.searchdata,
     issearch: state => !_.isEmpty(state.searchdata),
+    youtubeVideos: state => state.youtubeVideos,
   },
 
   mutations: {
@@ -34,6 +39,9 @@ export default {
     SET_MOVIEDETAIL: (state, moviedetail) => state.moviedetail = moviedetail,
     SET_SEARCHDATA: (state, searchdata) => state.searchdata = searchdata,
     SET_MOVIE_COMMENTS: (state, createmoviecomment) => (state.moviedetail.createmoviecomment = createmoviecomment),
+    SEARCH_YOUTUBE: function (state, res) {
+      state.youtubeVideos = res.data.items
+    },
   },
 
   actions: {
@@ -149,6 +157,24 @@ export default {
         })
         .catch(err => console.error(err.response))
       }
-    }
+    },
+    searchYoutube: function ({ commit }, searchText) {
+      const params = {
+        q: searchText+'movie',
+        key: YOUTUBE_KEY,
+        part: 'snippet',
+        type: 'video'
+      }
+      axios({
+        method: 'get',
+        url: YOUTUBE_URL,
+        params,
+      })
+      .then(res => {
+        commit('SEARCH_YOUTUBE', res)
+        console.log(res.data)
+      })
+      .catch(err => console.log(err))
+    },
   }
 }
