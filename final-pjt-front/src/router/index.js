@@ -6,6 +6,7 @@ import MovieListView from '@/views/movies/MovieListView.vue' //Home
 import NowPlayingListView from '@/views/movies/NowPlayingListView.vue'
 
 import TestView from '@/views/movies/TestView.vue'
+import MovieDetail from '@/views/movies/MovieDetail.vue'
 
 import LoginView from '@/views/accounts/LoginView.vue'
 import LogoutView from '@/views/accounts/LogoutView.vue'
@@ -51,6 +52,11 @@ const routes = [
     path: '/test',
     name: 'test',
     component: TestView
+  },
+  {
+    path: '/movie/detail/:movieNum',
+    name: 'moviedetail',
+    component: MovieDetail
   },
   {
     path: '/404',

@@ -8,7 +8,8 @@
             <img :src="`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${nowplay.poster_path}`" class="card-img-top" alt="...">
             <div class="card-body">
               <div class="card-title">{{ nowplay.title }}</div>
-              <a href="#" class="btn btn-primary">Detail</a>
+              {{ nowplay.movieNum }}
+              <router-link :to="{ name: 'moviedetail', params: { movieNum: nowplay.movie_num } }">DETAIL</router-link>
             </div>
           </div>
         </div>
