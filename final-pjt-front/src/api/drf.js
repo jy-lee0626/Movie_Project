@@ -45,5 +45,11 @@ export default {
   },
   likemovie: {
     likemovie: (movieNum) => HOST + MOVIES + `${movieNum}/` +'like/',
+  },
+  createmoviecomment: {
+    createmoviecomment: (moviePk) => HOST + MOVIES + `${moviePk}/` + COMMENTS,
+  },
+  moviecommentdetail: {
+    moviecommentdetail: (moviePk, commentPk) => HOST + MOVIES + `${moviePk}/` + COMMENTS + `${commentPk}/`,
   }
 }

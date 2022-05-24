@@ -33,6 +33,7 @@ export default {
     SET_TVSHOW: (state, tvshow) => state.tvshow = tvshow,
     SET_MOVIEDETAIL: (state, moviedetail) => state.moviedetail = moviedetail,
     SET_SEARCHDATA: (state, searchdata) => state.searchdata = searchdata,
+    SET_MOVIE_COMMENTS: (state, createmoviecomment) => (state.moviedetail.createmoviecomment = createmoviecomment),
   },
 
   actions: {
@@ -106,5 +107,48 @@ export default {
       })
       .catch(err => console.error(err.response))
     },
+    createMovieComment({ commit, getters }, {moviePk, content }) {
+      const comment = { content }
+
+      axios({
+        url: drf.detailmovie.createmoviecomment(moviePk),
+        method: 'post',
+        data: comment,
+        headers: getters.authHeader,
+      })
+      .then(res => {
+        commit('SET_MOVIE_COMMENTS', res.data)
+      })
+      .catch(err => console.error(err.response))
+    },
+    updateComment({ commit, getters }, {moviePk, commentPk, content }) {
+      const comment = { content }
+
+      axios({
+        url: drf.detailmovie.moviecommentdetail(moviePk, commentPk),
+        method: 'put',
+        data: comment,
+        headers: getters.authHeader,
+      })
+      .then(res => {
+        commit('SET_MOVIE_COMMENTS', res.data)
+      })
+      .catch(err => console.error(err.response))
+    },
+
+    deleteComment({ commit, getters }, { moviePk, commentPk }) {
+      if (confirm('정말 삭제하시겠습니까?')) {
+        axios({
+          url: drf.detailmovie.moviecommentdetail(moviePk, commentPk),
+          method: 'delete',
+          data: {},
+          headers: getters.authHeader,
+        })
+        .then(res => {
+          commit('SET_MOVIE_COMMENTS', res.data)
+        })
+        .catch(err => console.error(err.response))
+      }
+    }
   }
 }
