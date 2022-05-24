@@ -23,7 +23,7 @@
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0" v-if="isLoggedIn">
           <li class="nav-item mr-2 user_css">
             <router-link class="nav-link text-white" :to="{ name: 'profile', params: { username } }">
-              <img :src="`${currentUser.profile_image}`" alt="" style="width: 30px;">
+              <img :src="`${currentUser.profile_image}`" alt="" style="width: 30px; border-radius: 50% ">
               {{ currentUser.username }}님</router-link>
           </li>
           <li class="nav-item">
