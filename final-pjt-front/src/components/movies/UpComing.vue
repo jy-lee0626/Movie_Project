@@ -10,7 +10,7 @@
           <div class="text_css">&#8249;</div>
         </button>
         <div class="slider">
-          <img class="img__item" v-for="coming in upcoming.results" :key="coming.id" :src="`https://www.themoviedb.org/t/p/w220_and_h330_bestv2${coming.poster_path}`" alt="포스터 없음">
+          <router-link class="img__item" v-for="coming in upcoming.results" :key="coming.id" :src="`https://www.themoviedb.org/t/p/w220_and_h330_bestv2${coming.poster_path}`" alt="포스터 없음" tag="img" :to="{ name: 'moviedetail', params: { movieNum: coming.id } }"></router-link>
         </div>
         <button class="handle right-handle">
           <div class="text_css">&#8250;</div>
