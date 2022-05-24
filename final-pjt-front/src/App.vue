@@ -51,4 +51,7 @@ body {
   /* background-color: rgba(250,227,217,1); */
   background-color: black;
 }
+.profile_image {
+  border-radius: 50%;
+}
 </style>
