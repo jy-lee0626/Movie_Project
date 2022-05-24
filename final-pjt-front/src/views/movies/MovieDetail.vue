@@ -14,10 +14,10 @@
       <p>popularity: {{ movieDetail.popularity }}</p>
       <p>genres: {{ movieDetail.genres }}</p>
       <p>like_count: {{ movieDetail.like_count }}</p>
-      <p>movie_like: {{ movieDetail.movie_like }}</p>
-      <input type="submit" value="좋아요">
       <div>
         <!-- 여기에 좋아요 버튼 만들어야됨 -->
+        Likeit:
+        <button @click="likeMovie(movieNum)">{{ likeCount }}</button>
       </div>
     </div>
   </div>
@@ -39,10 +39,13 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['movieDetail'])
+    ...mapGetters(['movieDetail']),
+    likeCount() {
+      return this.movieDetail.like_count
+    }
   },
   methods: {
-    ...mapActions(['fetchMovieDetail'])
+    ...mapActions(['fetchMovieDetail', 'likeMovie'])
   },
   created() {
     this.fetchMovieDetail(this.movieNum)
