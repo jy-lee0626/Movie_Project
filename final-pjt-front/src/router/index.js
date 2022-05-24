@@ -7,7 +7,7 @@ import NowPlayingListView from '@/views/movies/NowPlayingListView.vue'
 
 import TestView from '@/views/movies/TestView.vue'
 import MovieDetail from '@/views/movies/MovieDetail.vue'
-import SearchData from '@/components/movies/SearchData.vue'
+import SearchDataView from '@/views/movies/SearchDataView.vue'
 
 import LoginView from '@/views/accounts/LoginView.vue'
 import LogoutView from '@/views/accounts/LogoutView.vue'
@@ -61,8 +61,8 @@ const routes = [
   },
   {
     path: '/movies/search/:searchdata',
-    nama: 'searchdata',
-    component: SearchData
+    name: 'SearchDataView',
+    component: SearchDataView
   },
   {
     path: '/404',
