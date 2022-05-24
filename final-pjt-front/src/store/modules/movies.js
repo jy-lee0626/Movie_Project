@@ -35,16 +35,20 @@ export default {
   },
 
   actions: {
-    search( { commit, getters }, searchdataname) {
+    search( { commit, getters }, searchdata) {
       axios({
         url: drf.movies.search(),
         method: 'get',
         headers: getters.authHeader,
-        data: searchdataname,
+        data: searchdata,
       })
         .then(res => {
           commit('SET_SEARCHDATA', res.data)
           router.push({ name: 'SearchDataView' })
+          router.push({
+            name: 'SearchDataView',
+            params: { searchdata: searchdata }
+          })
         })
         .catch(err => console.error(err.response))
     },
