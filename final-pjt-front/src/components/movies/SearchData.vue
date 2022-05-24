@@ -22,6 +22,8 @@
       {{ data.title }}
       <img :src="`https://www.themoviedb.org/t/p/w220_and_h330_bestv2${data.poster_path}`" alt="포스터 없음">
     </div>
+    <h2 v-if="!searchdata" class="mt-5">검색결과가 없습니다.</h2>
+    {{ searchdata }}
   </div>
 </template>
 

@@ -38,13 +38,12 @@ export default {
     search( { commit, getters }, searchdata) {
       axios({
         url: drf.movies.search(),
-        method: 'get',
+        method: 'post',
+        data: {searchdata: searchdata},
         headers: getters.authHeader,
-        data: searchdata,
       })
         .then(res => {
           commit('SET_SEARCHDATA', res.data)
-          router.push({ name: 'SearchDataView' })
           router.push({
             name: 'SearchDataView',
             params: { searchdata: searchdata }
