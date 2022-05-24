@@ -10,6 +10,7 @@ export default {
     upcoming: [],
     popular: [],
     tvshow: [],
+    moviedetail: {},
   },
 
   getters: {
@@ -17,7 +18,8 @@ export default {
     isnowplaying: state => !_.isEmpty(state.nowplaying),
     upcoming: state => state.upcoming,
     popular: state => state.popular,
-    tvshow: state => state.tvshow
+    tvshow: state => state.tvshow,
+    movieDetail: state => state.moviedetail,
   },
 
   mutations: {
@@ -25,6 +27,7 @@ export default {
     SET_UPCOMING: (state, upcoming) => state.upcoming = upcoming,
     SET_POPULAR: (state, popular) => state.popular = popular,
     SET_TVSHOW: (state, tvshow) => state.tvshow = tvshow,
+    SET_MOVIEDETAIL: (state, moviedetail) => state.moviedetail = moviedetail,
   },
 
   actions: {
@@ -61,5 +64,14 @@ export default {
         .then(res => commit('SET_TVSHOW', res.data))
         .catch(err => console.error(err.response))
     },
+    fetchMovieDetail({ commit, getters }, movieNum) {
+      axios({
+        url: drf.moviedetail.moviedetail(movieNum),
+        method: 'get',
+        headers: getters.authHeader,
+      })
+      .then(res => commit('SET_MOVIEDETAIL', res.data))
+      .catch(err => console.error(err.response))
+    }
   }
 }

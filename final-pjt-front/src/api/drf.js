@@ -38,5 +38,8 @@ export default {
   },
   tvshow: {
     tvshow: () => BASE_URL + 'tv/popular' + KEY
+  },
+  moviedetail: {
+    moviedetail: (movieNum) => HOST + MOVIES + `${movieNum}/`,
   }
 }
