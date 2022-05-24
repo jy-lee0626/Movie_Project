@@ -27,7 +27,7 @@
           </form>
           <li class="nav-item mr-2 user_css">
             <router-link class="nav-link text-white" :to="{ name: 'profile', params: { username } }">
-              <img :src="`${currentUser.profile_image}`" alt="" style="width: 30px; border-radius: 50% ">
+              <img :src="`${currentUser.profile_image}`" alt="" class="profile_image"  style="width: 30px;">
               {{ currentUser.first_name }}님</router-link>
           </li>
           <li class="nav-item">

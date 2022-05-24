@@ -1,26 +1,25 @@
 <template>
   <div>
-    <img :src="`${profile.profile_image}`" alt="" style="width: 300px; border-radius: 50% ">
+    <img :src="`${profile.profile_image}`" class="profile_image" alt="profile_image" style="width: 300px; ">
     <h1>{{ profile.first_name }}님의 프로필</h1>
 
     <h2>작성한 글</h2>
-      <p v-if="profile.review_set">
-        작성한 글이 없습니다. 
-      </p>
-      <p v-else>
+      <p v-if="profile.review_set===[]">
         <ul>
           <li v-for="article in profile.articles" :key="article.pk">
             <router-link :to="{ name: 'article', params: { articlePk: article.pk } }">
               {{ article.title }}
             </router-link>
           </li>
-
-        </ul>
+        </ul> 
+      </p>
+      <p v-else>
+        작성한 글이 없습니다.
       </p>
     <hr>
-    <p>{{profile}}</p>
     <h2>좋아요 한 영화</h2>
-      <p v-if="profile.like_movies">
+      <p v-if="profile.like_movies===[]">
+        {{profile.like_movies}}
         <ul>
           <li v-for="movie in profile.like_movies" :key="movie.movie_num">
             <router-link :to="{ name: 'moviedetail', params: { movieNum: movie.movie_num } }">
@@ -32,10 +31,17 @@
       <p v-else>
         재미있게 본 영화를 추천해주세요
       </p>
+    <hr>
     <h2>유저 추천</h2>
-      <p>
-        {{ recommendUser.first_name}}
-      </p>
+      <div>
+        <!-- 여기서 누르면 url은 이동하는데 페이지는 새로고침을 눌러줘야 바뀜 -->
+        <router-link :to="{ name: 'profile', params: { username: recommendUser.username } }">
+          <img link :src="`${recommendUser.profile_image}`" alt="profile_image" class="profile_image" style="width: 100px;">
+        </router-link>
+        <p>
+          {{ recommendUser.first_name}}
+        </p>
+      </div>
   </div>
 </template>
 
