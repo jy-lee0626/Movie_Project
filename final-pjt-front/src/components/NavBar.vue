@@ -52,7 +52,7 @@
 
   export default {
     name: 'NavBar',
-    date() {
+    data() {
       return {
         searchdata: '',
       }
