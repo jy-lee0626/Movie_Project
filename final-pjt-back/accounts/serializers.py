@@ -7,7 +7,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('username', 'gender', 'like_movies',)
+        fields = ('username', 'gender', 'like_movies', 'profile_image',)
 
 
 class CustomRegisterSerializer(RegisterSerializer):
@@ -25,7 +25,8 @@ class CustomRegisterSerializer(RegisterSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-
+    profile_image = serializers.ImageField(use_url=True)
+    
     class Meta: 
         model = User
         fields = '__all__'
