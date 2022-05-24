@@ -47,12 +47,10 @@ def now_playing_movies(request):
 def movie_detail(request, movie_num):
     if request.method == 'GET':
         if Movie.objects.filter(movie_num=movie_num).exists():
-            print(True)
             movie = get_object_or_404(Movie, movie_num=movie_num)
             serializer = MovieSerializer(movie)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            print(False)
             result = requests.get(f'https://api.themoviedb.org/3/movie/{movie_num}?api_key=03f03c44041dd5b89d9605ef7395f631&language=ko-KR')
             result = result.json()
             genres_list = result.get('genres')
