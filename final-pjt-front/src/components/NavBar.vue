@@ -21,8 +21,8 @@
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0" v-if="isLoggedIn">
-          <form class="d-flex" @submit.prevent="search(searchdata)">
-            <input class="form-control me-2" type="search" v-model="searchdata" placeholder="검색" aria-label="Search">
+          <form class="d-flex" @submit.prevent="search(searchdataname)">
+            <input class="form-control me-2" type="search" role="link" v-model="searchdataname" placeholder="검색" aria-label="Search">
             <button class="btn btn-outline-light" type="submit">Search</button>
           </form>
           <li class="nav-item mr-2 user_css">
@@ -54,7 +54,7 @@
     name: 'NavBar',
     data() {
       return {
-        searchdata: '',
+        searchdataname: '',
       }
     },
     computed: {
