@@ -21,6 +21,11 @@
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0" v-if="isLoggedIn">
+          <form class="form-inline active-cyan-4">
+            <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+              aria-label="Search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </form>
           <form class="d-flex" @submit.prevent="search(searchdata)">
             <input class="form-control me-2" type="search" role="link" v-model="searchdata" placeholder="검색" aria-label="Search">
             <button class="btn btn-outline-light" type="submit">Search</button>
@@ -70,5 +75,37 @@
 </script>
 
 <style>
-
+.active-pink-2 input[type=text]:focus:not([readonly]) {
+  border-bottom: 1px solid #f48fb1;
+  box-shadow: 0 1px 0 0 #f48fb1;
+}
+.active-pink input[type=text] {
+  border-bottom: 1px solid #f48fb1;
+  box-shadow: 0 1px 0 0 #f48fb1;
+}
+.active-purple-2 input[type=text]:focus:not([readonly]) {
+  border-bottom: 1px solid #ce93d8;
+  box-shadow: 0 1px 0 0 #ce93d8;
+}
+.active-purple input[type=text] {
+  border-bottom: 1px solid #ce93d8;
+  box-shadow: 0 1px 0 0 #ce93d8;
+}
+.active-cyan-2 input[type=text]:focus:not([readonly]) {
+  border-bottom: 1px solid #4dd0e1;
+  box-shadow: 0 1px 0 0 #4dd0e1;
+}
+.active-cyan input[type=text] {
+  border-bottom: 1px solid #4dd0e1;
+  box-shadow: 0 1px 0 0 #4dd0e1;
+}
+.active-cyan .fa, .active-cyan-2 .fa {
+  color: #4dd0e1;
+}
+.active-purple .fa, .active-purple-2 .fa {
+  color: #ce93d8;
+}
+.active-pink .fa, .active-pink-2 .fa {
+  color: #f48fb1;
+}
 </style>
