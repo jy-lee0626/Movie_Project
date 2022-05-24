@@ -90,6 +90,8 @@ export default {
           .catch(err => {
             console.error(err.response)
           })
+      } else {
+        history.go(-1)
       }
     },
 
