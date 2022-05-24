@@ -8,12 +8,14 @@ export default {
     token: localStorage.getItem('token') || '' ,
     currentUser: {},
     profile: {},
+    recommendUser: [],
     authError: null,
   },
   getters: {
     isLoggedIn: state => !!state.token,
     currentUser: state => state.currentUser,
     profile: state => state.profile,
+    recommendUser: state => state.recommendUser,
     authError: state => state.authError,
     authHeader: state => ({ Authorization: `Token ${state.token}`})
   },
@@ -22,6 +24,7 @@ export default {
     SET_TOKEN: (state, token) => state.token = token,
     SET_CURRENT_USER: (state, user) => state.currentUser = user,
     SET_PROFILE: (state, profile) => state.profile = profile,
+    SET_RECOMMENDUSER: (state, recommendUser) => state.recommendUser = recommendUser,
     SET_AUTH_ERROR: (state, error) => state.authError = error
   },
 
@@ -78,7 +81,7 @@ export default {
         axios({
         url: drf.accounts.logout(),
         method: 'post',
-          headers: getters.authHeader,
+        headers: getters.authHeader,
         })
           .then(() => {
             dispatch('removeToken')
@@ -117,5 +120,18 @@ export default {
           commit('SET_PROFILE', res.data)
         })
     },
+    fetchRecommendUser({ commit, getters,}, { username }) {
+      axios({
+        url: drf.accounts.recommendUser(username),
+        method: 'get',
+        headers: getters.authHeader,
+      })
+        .then(res => {
+          commit('SET_RECOMMENDUSER', res.data)
+        })
+        .catch(err => {
+          console.error(err.response)
+        })
+    }
   },
 }
