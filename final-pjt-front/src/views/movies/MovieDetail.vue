@@ -2,7 +2,7 @@
 <div>
   <div class="d-flex">
     <!-- <p>{{ movieDetail }}</p> -->
-    <img :src="`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${movieDetail.poster_path}`" class="card-img-top d-flex" alt="..." style="max-width: 300px; max-height: 450px;">
+    <img :src="`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${movieDetail.poster_path}`" alt="..." style="max-width: 300px; max-height: 450px;">
     <div>
       <h2>title: {{ movieDetail.title }}</h2>
       <p>release_date: {{ movieDetail.release_date }}</p>
@@ -13,11 +13,12 @@
       <p>vote_average: {{ movieDetail.vote_average }}</p>
       <p>popularity: {{ movieDetail.popularity }}</p>
       <p>genres: {{ movieDetail.genres }}</p>
-      <p>like_count: {{ movieDetail.like_count }}</p>
       <div>
         <!-- 여기에 좋아요 버튼 만들어야됨 -->
-        Likeit:
+        Likeit: {{ likeCount }} 
+        <br>
         <button @click="likeMovie(movieNum)">좋아요</button>
+        <!-- {{ likecount }} -->
       </div>
     </div>
   </div>
@@ -48,9 +49,6 @@ export default {
     ...mapActions(['fetchMovieDetail', 'likeMovie'])
   },
   created() {
-    this.fetchMovieDetail(this.movieNum)
-  },
-  updated() {
     this.fetchMovieDetail(this.movieNum)
   },
 }

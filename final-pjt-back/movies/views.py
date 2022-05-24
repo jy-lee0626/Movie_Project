@@ -138,19 +138,14 @@ def like_movie(request, movie_num):
         movie.movie_like.remove(user)
         movie.like_count -= 1
         movie.save()
-        context = {
-            'unliked': f'{user} unliked movie {movie.title}'
-        }
-        return Response(context)
+        serializer = MovieSerializer(movie)
+        return Response(serializer.data)
     else:
         movie.movie_like.add(user)
         movie.like_count += 1
         movie.save()
         serializer = MovieSerializer(movie)
-        context = {
-            'liked': f'{user} liked movie {movie.title}'
-        }
-        return Response(context)
+        return Response(serializer.data)
 
 
 @api_view(['GET'])

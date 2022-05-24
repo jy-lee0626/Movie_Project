@@ -101,7 +101,9 @@ export default {
         method: 'post',
         headers: getters.authHeader,
       })
-      .then(res => commit('SET_MOVIEDETAIL', res.data))
+      .then(res => {
+        commit('SET_MOVIEDETAIL', res.data)
+      })
       .catch(err => console.error(err.response))
     },
   }
