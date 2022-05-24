@@ -42,5 +42,8 @@ export default {
   },
   moviedetail: {
     moviedetail: (movieNum) => HOST + MOVIES + `${movieNum}/`,
+  },
+  likemovie: {
+    likemovie: (movieNum) => HOST + MOVIES + `${movieNum}/` +'like/',
   }
 }

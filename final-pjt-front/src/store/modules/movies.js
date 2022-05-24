@@ -93,6 +93,15 @@ export default {
       })
       .then(res => commit('SET_MOVIEDETAIL', res.data))
       .catch(err => console.error(err.response))
-    }
+    },
+    likeMovie({ commit, getters }, movieNum) {
+      axios({
+        url: drf.likemovie.likemovie(movieNum),
+        method: 'post',
+        headers: getters.authHeader,
+      })
+      .then(res => commit('SET_MOVIEDETAIL', res.data))
+      .catch(err => console.error(err.response))
+    },
   }
 }
