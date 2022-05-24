@@ -2,9 +2,9 @@
   <div>
     <div>HOME</div>
     <popular-list></popular-list>
+    <now-playing-list></now-playing-list>
     <tvshow-list></tvshow-list>
     <up-coming></up-coming>
-    <now-playing-list></now-playing-list>
   </div>
 </template>
 

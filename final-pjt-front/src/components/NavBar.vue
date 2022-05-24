@@ -10,19 +10,19 @@
           <li class="nav-item active">
             <router-link class="nav-link" :to="{ name: 'MovieListView' }">Home</router-link>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <router-link class="nav-link" :to="{ name: 'nowplaying' }">현재 상영작</router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">인기 영화</a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <router-link class="nav-link" :to="{ name: 'test' }">TEST</router-link>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0" v-if="isLoggedIn">
           <form class="form-inline active-purple" @submit.prevent="search(searchdata)">
-            <input class="form-control form-control-sm mt-2 mr-3 w-175" type="search" role="link" v-model="searchdata" placeholder="Search" aria-label="Search">
+            <input class="form-control form-control-sm mt-2 mr-3" type="search" role="link" v-model="searchdata" placeholder="Search" aria-label="Search">
             <i class="fas fa-search" aria-hidden="true"></i>
           </form>
           <li class="nav-item mr-2 user_css">
@@ -70,13 +70,9 @@
 </script>
 
 <style>
-.active-pink-2 input[type=text]:focus:not([readonly]) {
-  border-bottom: 1px solid #f48fb1;
-  box-shadow: 0 1px 0 0 #f48fb1;
-}
-.active-pink input[type=text] {
-  border-bottom: 1px solid #f48fb1;
-  box-shadow: 0 1px 0 0 #f48fb1;
+.active-purple {
+  width: 20rem;
+  margin: 0 1rem 0 0;
 }
 .active-purple-2 input[type=text]:focus:not([readonly]) {
   border-bottom: 1px solid #ce93d8;
@@ -99,8 +95,5 @@
 }
 .active-purple .fa, .active-purple-2 .fa {
   color: #ce93d8;
-}
-.active-pink .fa, .active-pink-2 .fa {
-  color: #f48fb1;
 }
 </style>
