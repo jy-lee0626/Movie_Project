@@ -17,7 +17,7 @@
       <div>
         <!-- 여기에 좋아요 버튼 만들어야됨 -->
         Likeit:
-        <button @click="likeMovie(movieNum)">{{ likeCount }}</button>
+        <button @click="likeMovie(movieNum)">좋아요</button>
       </div>
     </div>
   </div>
@@ -48,6 +48,9 @@ export default {
     ...mapActions(['fetchMovieDetail', 'likeMovie'])
   },
   created() {
+    this.fetchMovieDetail(this.movieNum)
+  },
+  updated() {
     this.fetchMovieDetail(this.movieNum)
   },
 }
