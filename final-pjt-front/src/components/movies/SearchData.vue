@@ -39,6 +39,6 @@ export default {
   margin: 20px;
   cursor: pointer;
   transition-delay: 0.4s;
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 </style>
