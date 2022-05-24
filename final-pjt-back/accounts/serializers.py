@@ -1,10 +1,13 @@
 from rest_framework import serializers
 from dj_rest_auth.registration.serializers import RegisterSerializer
+from movies.serializers import MovieSerializer
+from community.serializers import ReviewSerializer
 from .models import User
 
 class ProfileSerializer(serializers.ModelSerializer):
     profile_image = serializers.ImageField(use_url=True)
-
+    like_movies = MovieSerializer(many=True)
+    review_set = ReviewSerializer(many=True)
     class Meta:
         model = User
         fields = ('username', 'first_name', 'gender', 'like_movies', 'profile_image', 'review_set', 'comment_set')

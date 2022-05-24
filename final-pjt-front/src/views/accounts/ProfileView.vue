@@ -19,22 +19,23 @@
     <hr>
     <h2>좋아요 한 영화</h2>
       <p v-if="profile.like_movies===[]">
-        {{profile.like_movies}}
-        <ul>
-          <li v-for="movie in profile.like_movies" :key="movie.movie_num">
-            <router-link :to="{ name: 'moviedetail', params: { movieNum: movie.movie_num } }">
-              {{ movie }}
-            </router-link>
-          </li>
-        </ul>
-      </p>
-      <p v-else>
         재미있게 본 영화를 추천해주세요
+        
       </p>
+      <div v-else>
+
+          <span v-for="movie in profile.like_movies" :key="movie.movie_num">
+            <router-link :to="{ name: 'moviedetail', params: { movieNum: movie.movie_num } }">
+              <img :src="`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${movie.poster_path}`" alt="poster" style="width: 120px; ">
+              <br>
+              {{movie.title}}
+            </router-link>
+          </span>
+
+      </div>
     <hr>
     <h2>유저 추천</h2>
       <div>
-        <!-- 여기서 누르면 url은 이동하는데 페이지는 새로고침을 눌러줘야 바뀜 -->
         <router-link :to="{ name: 'profile', params: { username: recommendUser.username } }">
           <img link :src="`${recommendUser.profile_image}`" alt="profile_image" class="profile_image" style="width: 100px;">
         </router-link>
@@ -48,14 +49,19 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
-
 export default {
   name: 'ProfileView',
+  data() {
+    return {
+
+    }
+  },
   computed: {
     ...mapGetters(['profile', 'recommendUser'])
   },
   methods: {
-    ...mapActions(['fetchProfile', 'fetchRecommendUser'])
+    ...mapActions(['fetchProfile', 'fetchRecommendUser']),
+
   },
   created() {
     const payload = { username: this.$route.params.username }
