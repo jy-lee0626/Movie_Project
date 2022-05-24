@@ -3,6 +3,7 @@ import drf from '@/api/drf'
 // import router from '@/router'
 
 import _ from 'lodash'
+import router from '@/router'
 
 export default {
   state: {
@@ -11,6 +12,7 @@ export default {
     popular: [],
     tvshow: [],
     moviedetail: {},
+    searchdata: [],
   },
 
   getters: {
@@ -20,6 +22,7 @@ export default {
     popular: state => state.popular,
     tvshow: state => state.tvshow,
     movieDetail: state => state.moviedetail,
+    searchdata: state => state.searchdata,
   },
 
   mutations: {
@@ -28,9 +31,23 @@ export default {
     SET_POPULAR: (state, popular) => state.popular = popular,
     SET_TVSHOW: (state, tvshow) => state.tvshow = tvshow,
     SET_MOVIEDETAIL: (state, moviedetail) => state.moviedetail = moviedetail,
+    SET_SEARCHDATA: (state, searchdata) => state.searchdata = searchdata,
   },
 
   actions: {
+    search( { commit, getters }, searchdata) {
+      console.log(searchdata)
+      axios({
+        url: drf.movies.search(searchdata),
+        method: 'get',
+        headers: getters.authHeader,
+      })
+        .then(res => {
+          commit('SET_SEARCHDATA', res.data)
+          router.push({ name: 'SearchData' })
+        })
+        .catch(err => console.error(err.response))
+    },
     fetchNowplaying({ commit, getters }) {
       axios({
         url: drf.nowplaying.nowplaying(),

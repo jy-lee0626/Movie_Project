@@ -21,6 +21,10 @@
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0" v-if="isLoggedIn">
+          <form class="d-flex" @submit.prevent="search(searchdata)">
+            <input class="form-control me-2" type="search" v-model="searchdata" placeholder="검색" aria-label="Search">
+            <button class="btn btn-outline-light" type="submit">Search</button>
+          </form>
           <li class="nav-item mr-2 user_css">
             <router-link class="nav-link text-white" :to="{ name: 'profile', params: { username } }">
               <img :src="`${currentUser.profile_image}`" alt="" style="width: 30px; border-radius: 50% ">
@@ -44,16 +48,24 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
     name: 'NavBar',
+    date() {
+      return {
+        searchdata: '',
+      }
+    },
     computed: {
       ...mapGetters(['isLoggedIn', 'currentUser']),
       username() {
         return this.currentUser.username ? this.currentUser.username : 'guest'
       },
     },
+    methods: {
+      ...mapActions(['search'])
+    }
   }
 </script>
 

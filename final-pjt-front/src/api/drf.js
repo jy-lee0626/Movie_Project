@@ -26,6 +26,7 @@ export default {
   },
   movies: {
     movies: () => HOST + MOVIES,
+    search: (searchdata) => HOST + MOVIES + 'search/' + `${searchdata}`, 
   },
   nowplaying: {
     nowplaying: () => HOST + MOVIES + 'nowplaying/',
