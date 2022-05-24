@@ -69,10 +69,11 @@ export default {
         .then(res => commit('SET_UPCOMING', res.data))
         .catch(err => console.error(err.response))
     },
-    fetchPopular({ commit }) {
+    fetchPopular({ commit, getters }) {
       axios({
         url: drf.popular.popular(),
         method: 'get',
+        headers: getters.authHeader,
       })
         .then(res => commit('SET_POPULAR', res.data))
         .catch(err => console.error(err.response))

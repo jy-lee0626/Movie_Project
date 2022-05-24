@@ -10,7 +10,7 @@
           <div class="text_css">&#8249;</div>
         </button>
         <div class="slider">
-          <router-link class="img__item" v-for="popular in popular.results" :key="popular.id" :to="{ name: 'moviedetail', params: { movieNum: popular.id } }" tag="img" :src="`https://www.themoviedb.org/t/p/w220_and_h330_bestv2${popular.poster_path}`" alt="포스터 없음" ></router-link>
+          <router-link class="img__item" v-for="popul in popular" :key="popul.id" :to="{ name: 'moviedetail', params: { movieNum: popul.id } }" tag="img" :src="`https://www.themoviedb.org/t/p/w220_and_h330_bestv2${popul.poster_path}`" alt="포스터 없음" ></router-link>
         </div>
         <button class="handle right-handle">
           <div class="text_css">&#8250;</div>
