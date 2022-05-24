@@ -35,7 +35,7 @@ export default {
     upcoming: () => BASE_URL + 'movie/upcoming' + KEY
   },
   popular: {
-    popular: () => BASE_URL + 'movie/popular' + KEY
+    popular: () => HOST + MOVIES + 'my_popular/'
   },
   tvshow: {
     tvshow: () => BASE_URL + 'tv/popular' + KEY

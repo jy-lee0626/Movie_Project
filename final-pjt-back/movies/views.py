@@ -157,7 +157,7 @@ def like_movie(request, movie_num):
 
 @api_view(['GET'])
 def my_popular_movie(request):
-    movies = Movie.objects.order_by('-like_count')[:10]
+    movies = Movie.objects.order_by('-like_count')[:23]
     serializer = MovieListSerializer(movies, many=True)
     return Response(serializer.data)
 
