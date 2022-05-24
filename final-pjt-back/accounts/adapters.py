@@ -12,6 +12,9 @@ class CustomAccountAdapter(DefaultAccountAdapter):
         first_name = request.data.get("first_name")
         setattr(user, "gender", gender)
         setattr(user, "first_name", first_name)
-        
+        if gender == 'Female':
+            setattr(user, "profile_image", "female_avatar.png")
+        else: 
+            setattr(user, "profile_image", "male_avatar.png")
         user.save()
         return user
