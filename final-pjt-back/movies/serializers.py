@@ -1,7 +1,8 @@
 from rest_framework import serializers
+from django.contrib.auth import get_user_model
 from .models import Movie, MovieComment
 
-
+User = get_user_model()
 
 # 영화리스트
 class MovieListSerializer(serializers.ModelSerializer):
@@ -22,16 +23,13 @@ class MovieSerializer(serializers.ModelSerializer):
 
 
 # 영화코멘트입력
-class GetCommentSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = MovieComment
-        fields = '__all__'
-
-
-
-# 영화코멘트
 class MovieCommentSerializer(serializers.ModelSerializer):
+
+    class UserSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = User
+            fields = '__all__'
+
 
     class Meta:
         model = MovieComment
