@@ -23,6 +23,7 @@ export default {
     tvshow: state => state.tvshow,
     movieDetail: state => state.moviedetail,
     searchdata: state => state.searchdata,
+    issearch: state => !_.isEmpty(state.searchdata),
   },
 
   mutations: {
