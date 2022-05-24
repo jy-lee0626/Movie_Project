@@ -16,8 +16,8 @@ class Movie(models.Model):
 
 
 class MovieComment(models.Model):
-    movie_num = models.IntegerField(null=False)
-    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     rank = models.FloatField()
     content = models.CharField(max_length=300)
     created_at = models.DateTimeField(auto_now_add=True)
