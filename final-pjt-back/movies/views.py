@@ -73,8 +73,9 @@ def movie_detail(request, movie_num):
 
 # 영화검색결과
 @api_view(['GET'])
-def search(request, query):
+def search(request):
     if request.method == 'GET':
+        query = request.data.get('searchdata')
         result = requests.get(f'https://api.themoviedb.org/3/search/movie?api_key=03f03c44041dd5b89d9605ef7395f631&language=ko-KR&query={query}&page=1&include_adult=false')
         result = result.json().get('results')
         return JsonResponse(result, status=status.HTTP_200_OK, safe=False)

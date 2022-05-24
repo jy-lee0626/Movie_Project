@@ -14,7 +14,7 @@ export default {
     signup: () => HOST + ACCOUNTS + 'signup/',
     currentUserInfo: () => HOST + ACCOUNTS + 'user/',
     profile: username => HOST + ACCOUNTS + 'profile/' + username,
-    recommendUser: username => HOST + ACCOUNTS + 'profile/' + username + 'user_match/',
+    recommendUser: username => HOST + ACCOUNTS + 'profile/' + username + '/user_match/',
   },
   articles: {
     articles: () => HOST + ARTICLES,

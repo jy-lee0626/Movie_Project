@@ -11,7 +11,7 @@ User = get_user_model()
 @api_view(['GET'])
 def profile(request, username):
     user = get_object_or_404(User, username=username)
-    serializer = ProfileSerializer(user)
+    serializer = ProfileSerializer(user, context={"request": request})
     return Response(serializer.data)
 
 
@@ -32,12 +32,9 @@ def user_match(request, username):
         if cnt >= movie_count: 
             movie_count = cnt
             match = other
-    serializer = ProfileSerializer(match)
-    context = {
-        'user': serializer.data,
-        'count': movie_count, # 좋아요 한 영화가 몇 개 겹치는지 
-    }
-    return Response(context) 
+    serializer = ProfileSerializer(match, context={"request": request})
+    serializer.data
+    return Response(serializer.data) 
 
 
 
