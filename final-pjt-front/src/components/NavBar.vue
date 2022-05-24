@@ -21,14 +21,9 @@
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0" v-if="isLoggedIn">
-          <form class="form-inline active-cyan-4">
-            <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
-              aria-label="Search">
+          <form class="form-inline active-purple" @submit.prevent="search(searchdata)">
+            <input class="form-control form-control-sm mt-2 mr-3 w-175" type="search" role="link" v-model="searchdata" placeholder="Search" aria-label="Search">
             <i class="fas fa-search" aria-hidden="true"></i>
-          </form>
-          <form class="d-flex" @submit.prevent="search(searchdata)">
-            <input class="form-control me-2" type="search" role="link" v-model="searchdata" placeholder="검색" aria-label="Search">
-            <button class="btn btn-outline-light" type="submit">Search</button>
           </form>
           <li class="nav-item mr-2 user_css">
             <router-link class="nav-link text-white" :to="{ name: 'profile', params: { username } }">
