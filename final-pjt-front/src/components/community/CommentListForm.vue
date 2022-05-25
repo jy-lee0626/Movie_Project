@@ -20,9 +20,9 @@ export default {
     ...mapGetters(['review']),
   },
   methods: {
-    ...mapActions(['createComment']),
+    ...mapActions(['createReviewComment']),
     onSubmit() {
-      this.createComment({ reviewNum: this.review.id, content: this.content, })
+      this.createReviewComment({ reviewNum: this.review.id, content: this.content, })
       this.content = ''
     }
   }
