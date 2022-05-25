@@ -34,10 +34,11 @@
             </div>
             <hr>
             <div class="movie-detail-overview-body">
-              {{ movieDetail.overview | maxlength(430) }}
+              {{ movieDetail.overview | maxlength(500) }}
             </div>
             <div>
-              Likeit: {{ likeCount }} 
+              <hr>
+              좋아요: {{ likeCount }} 
               <br>
               <button class="btn btn-link" style="color: crimson;" @click="likeMovie(movieNum)" >
                 <i class="fas fa-heart fa-2x"></i>
@@ -50,13 +51,6 @@
             </div>
           </div>
           <div class="movie-detail-lower">
-            <!-- youtube -->
-            <div class="movie-youtube-area">
-              관련 영상
-              <hr>
-              <youtube-list></youtube-list>
-              {{ youtubeVideos }}
-            </div>
           </div>
         </div>
       </div>
@@ -70,7 +64,6 @@
 
 <script>
 import MovieCommentList from '@/components/movies/MovieCommentList.vue'
-import YoutubeList from '@/components/movies/YoutubeList'
 
 import { mapActions, mapGetters } from 'vuex'
 
@@ -78,16 +71,10 @@ export default {
   name: 'MovieDetail',
   components: {
     MovieCommentList,
-    YoutubeList,
   },
   data() {
     return {
       movieNum: this.$route.params.movieNum,
-      dialog: false,
-      notifications: false,
-      sound: true,
-      widgets: false,
-      moviePk: this.$route.params.moviePk,
     }
   },
   filters: {
@@ -111,7 +98,7 @@ export default {
   },
   created() {
     this.fetchMovieDetail(this.movieNum)
-    this.searchYoutube(this.movieDetail.title)
+    // this.searchYoutube(this.movieDetail.title)
   },
 }
 </script>
