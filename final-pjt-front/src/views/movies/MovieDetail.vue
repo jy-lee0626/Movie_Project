@@ -38,16 +38,13 @@
             </div>
             <div>
               <hr>
-              좋아요: {{ likeCount }} 
-              <br>
-              <button class="btn btn-link" style="color: crimson;" @click="likeMovie(movieNum)" >
-                <i class="fas fa-heart fa-2x"></i>
-              </button>
-              <!-- <button @click="likeMovie(movieNum)">
-                <span class="material-icons orange600">
-                favorite
-                </span>
-              </button> -->
+              <p>
+                <button class="btn btn-link" style="color: crimson;" @click="likeMovie(movieNum)" >
+                  <i class="fas fa-heart fa-2x heart"></i>
+                </button>
+                {{ likeCount }} likes
+              </p>
+              <hr>
             </div>
           </div>
           <div class="movie-detail-lower">
