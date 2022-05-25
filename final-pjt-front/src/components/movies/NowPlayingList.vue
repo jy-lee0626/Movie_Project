@@ -7,7 +7,7 @@
       </div>
       <div class="container_css">
         <button class="handle left-handle">
-          <div class="text_css">&#8249;</div>
+          <div class="text_css_l">&#8249;</div>
         </button>
         <div class="slider">
           <router-link class="img__item" v-for="nowplay in nowplaying.slice(0, 20)" :key="nowplay.id" :to="{ name: 'moviedetail', params: { movieNum: nowplay.movie_num } }" tag="img" :src="`https://www.themoviedb.org/t/p/w220_and_h330_bestv2${nowplay.poster_path}`" alt="포스터 없음">
@@ -17,7 +17,7 @@
           </router-link>
         </div>
         <button class="handle right-handle">
-          <div class="text_css">&#8250;</div>
+          <div class="text_css_r">&#8250;</div>
         </button>
       </div>
     </div>
@@ -124,9 +124,15 @@ body {
   background-color: rgba(255, 255, 255, .5);
 }
 
-.text_css {
+.text_css_l {
   transition: transform 150ms ease-in-out;
-  padding-bottom: 0.3rem;
+  padding: 0.2rem 0.3rem 0 0rem;
+  font-size: 1.5rem;
+}
+.text_css_r {
+  transition: transform 150ms ease-in-out;
+  padding: 0.2rem 0 0rem 0.3rem;
+  font-size: 1.5rem;
 }
 
 .handle:hover .text,

@@ -7,7 +7,7 @@
       </div>
       <div class="container_css">
         <button class="handle left-handle">
-          <div class="text_css">&#8249;</div>
+          <div class="text_css_l">&#8249;</div>
         </button>
         <div class="slider">
           <router-link class="img__item" v-for="popul in popular" :key="popul.id" :to="{ name: 'moviedetail', params: { movieNum: popul.movie_num } }" tag="img" :src="`https://www.themoviedb.org/t/p/w220_and_h330_bestv2${popul.poster_path}`" alt="포스터 없음" ></router-link>
@@ -18,7 +18,7 @@
           </span> -->
         </div>
         <button class="handle right-handle">
-          <div class="text_css">&#8250;</div>
+          <div class="text_css_r">&#8250;</div>
         </button>
       </div>
     </div>
