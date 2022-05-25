@@ -11,7 +11,7 @@
             <router-link class="nav-link" :to="{ name: 'MovieListView' }">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'ReviewsView' }">COMMUNITY</router-link>
+            <router-link class="nav-link" :to="{ name: 'ReviewsView' }">Community</router-link>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0" v-if="isLoggedIn">

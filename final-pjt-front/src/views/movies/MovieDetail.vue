@@ -46,15 +46,29 @@
                     {{ likeCount }} likes
                 </button>
               </p>
-          <div v-for="like in movieDetail.movie_like" :key="like">
-            <div v-if="currentUser.username === like.username">
-              <button class="btn btn-link" style="color: crimson;" @click="likeMovie(movieNum)" >
-                <i class="fas fa-heart fa-2x heart"></i>
-              </button>
-            </div>
+          <div v-for="like in movieDetail.movie_like" :key="like.username">
+            <button v-if="currentUser.username === like.username" class="btn btn-link" style="color: crimson;" @click="likeMovie(movieNum)" >
+              <i class="fas fa-heart fa-2x heart"></i>
+            </button>
+            <!-- <button v-else class="btn btn-link" style="color: crimson;" @click="likeMovie(movieNum)" >
+              <i class="fas fa-heart fa-2x heart"></i>
+            </button> -->
           </div>
             </div>
           </div>
+          <!-- --- 실패 -->
+              <!-- <div v-for="like in movieDetail.movie_like" :key="like.username">
+                <button v-if="currentUser.username === like.username" class="btn btn-link" style="color: crimson;" @click="likeMovie(movieNum)" >
+                  <i class="fas fa-heart fa-2x heart"></i>
+                </button>
+                <button v-else class="btn btn-link" style="color: white;" @click="likeMovie(movieNum)" >
+                  <i class="fas fa-heart fa-2x heart"></i>
+                </button>
+                <span>
+                    {{ likeCount }} likes
+                </span>
+              </div>
+            =============== -->
           <!-- <div v-if="currentUser.username in movieDetail.movie_like">True</div> -->
           <div class="movie-detail-lower">
           </div>
