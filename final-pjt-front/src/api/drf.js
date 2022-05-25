@@ -38,14 +38,10 @@ export default {
   },
   moviedetail: {
     moviedetail: (movieNum) => HOST + MOVIES + `${movieNum}/`,
+    createmoviecomment: (movieNum) => HOST + MOVIES + `${movieNum}/` + COMMENTS,
+    moviecommentdetail: (movieNum, commentPk) => HOST + MOVIES + `${movieNum}/` + COMMENTS + `${commentPk}/`,
   },
   likemovie: {
     likemovie: (movieNum) => HOST + MOVIES + `${movieNum}/` +'like/',
-  },
-  createmoviecomment: {
-    createmoviecomment: (moviePk) => HOST + MOVIES + `${moviePk}/` + COMMENTS,
-  },
-  moviecommentdetail: {
-    moviecommentdetail: (moviePk, commentPk) => HOST + MOVIES + `${moviePk}/` + COMMENTS + `${commentPk}/`,
   },
 }

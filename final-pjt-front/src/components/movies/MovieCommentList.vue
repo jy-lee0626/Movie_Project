@@ -5,10 +5,11 @@
       <movie-comment-item
       v-for="comment in comments"
       :comment="comment"
-      :key="comment.pk">
+      :key="comment.pk"
+      :moviedetail="moviedetail">
       </movie-comment-item>
     </ul>
-    <movie-comment-form></movie-comment-form>
+    <movie-comment-form :moviedetail="moviedetail"></movie-comment-form>
   </div>
 </template>
 
@@ -19,7 +20,7 @@ import MovieCommentForm from '@/components/movies/MovieCommentForm.vue'
 export default {
   name: "MovieCommentList",
   components: { MovieCommentItem, MovieCommentForm },
-  props: { comments: Array },
+  props: { comments: Array, moviedetail: Object },
 }
 </script>
 
