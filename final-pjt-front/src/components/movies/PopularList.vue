@@ -6,18 +6,20 @@
         <div class="progress-bar_css mt-5 pt-5"></div>
       </div>
       <div class="container_css">
-        <button class="handle left-handle">
+        <button class="handle left-handle" style="{z-index: 100;}">
           <div class="text_css_l">&#8249;</div>
         </button>
         <div class="slider">
-          <router-link class="img__item" v-for="popul in popular" :key="popul.id" :to="{ name: 'moviedetail', params: { movieNum: popul.movie_num } }" tag="img" :src="`https://www.themoviedb.org/t/p/w220_and_h330_bestv2${popul.poster_path}`" alt="포스터 없음" ></router-link>
+
+          <router-link class="img__item" v-for="popul in popular" :key="popul.id" :to="{ name: 'moviedetail', params: { movieNum: popul.movie_num } }" tag="img" :src="`https://www.themoviedb.org/t/p/w220_and_h330_bestv2${popul.poster_path}`" alt="포스터 없음"></router-link>
+          
           <!-- <span v-for="popul in popular" :key="popul.id">
             <span v-if="popul.poster_path">
               <router-link class="img__item" :to="{ name: 'moviedetail', params: { movieNum: popul.movie_num } }" tag="img" :src="`https://www.themoviedb.org/t/p/w220_and_h330_bestv2${popul.poster_path}`" alt="포스터 없음"></router-link>
             </span>
           </span> -->
         </div>
-        <button class="handle right-handle">
+        <button class="handle right-handle" style="{position:relative; z-index: 100;}">
           <div class="text_css_r">&#8250;</div>
         </button>
       </div>
@@ -40,7 +42,7 @@ export default {
   },
   created() {
     this.fetchPopular()
-  },
+  }
 }
 </script>
 
