@@ -10,7 +10,7 @@ urlpatterns = [
     path('my_popular/', views.my_popular_movie),
     path('<int:movie_num>/like/', views.like_movie),
     path('search/', views.search),
-    path('<int:movie_pk>/comments/', views.create_comment),
+    path('<int:movie_pk>/comments/', views.movie_comment),
     # path('comments/', views.comment_list),
     path('<int:movie_pk>/comments/<int:comment_pk>/', views.comment_detail),
     
