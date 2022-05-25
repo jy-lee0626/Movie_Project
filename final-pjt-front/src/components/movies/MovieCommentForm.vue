@@ -3,6 +3,7 @@
     <form @submit.prevent="onSubmit" class="movie-comment-form">
       <label for="comment">comment: </label>
       <input type="text" id="comment" v-model="content" required>
+      <input type="number" step="0.5" v-model="rank">
       <button>CommentForm</button>
     </form>
   </div>
@@ -14,17 +15,22 @@ export default {
   name: "MovieCommentForm",
   data() {
     return {
-      content: ''
+      content: '',
+      rank: 0
     }
   }, 
+  props: {
+    moviedetail: Object 
+  },
   computed: {
     ...mapGetters(['movieDetail'])
   },
   methods: {
     ...mapActions(['createMovieComment']),
     onSubmit() {
-      this.createMovieComment({ moviePk: this.movieDetail.pk, content: this.content, })
+      this.createMovieComment({ movieNum: this.moviedetail.movie_num, content: this.content, rank: this.rank })
       this.content = ''
+      this.rank = 0
     }
   }
 }

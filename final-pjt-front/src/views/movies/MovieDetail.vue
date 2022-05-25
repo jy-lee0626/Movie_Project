@@ -64,7 +64,7 @@
   <!-- --- -->
     <!-- <movie-comment-form></movie-comment-form>
     <movie-comment-item></movie-comment-item> -->
-    <movie-comment-list :comments="movieDetail.comments"></movie-comment-list>
+    <movie-comment-list :comments="movieDetail.comments" :moviedetail="movieDetail"></movie-comment-list>
   </div>
 </template>
 
@@ -87,7 +87,6 @@ export default {
       notifications: false,
       sound: true,
       widgets: false,
-      moviePk: this.$route.params.moviePk,
     }
   },
   filters: {
