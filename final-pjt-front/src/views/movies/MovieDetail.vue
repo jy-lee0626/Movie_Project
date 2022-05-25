@@ -58,7 +58,7 @@
   <!-- --- -->
     <!-- <movie-comment-form></movie-comment-form>
     <movie-comment-item></movie-comment-item> -->
-    <movie-comment-list :comments="movieDetail.comments"></movie-comment-list>
+    <movie-comment-list :comments="movieDetail.comments" :moviedetail="movieDetail"></movie-comment-list>
   </div>
 </template>
 

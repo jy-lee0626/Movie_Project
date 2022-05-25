@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from .models import Review, Comment
+from movies.models import Movie
 from .serializers import *
 from rest_framework import status
 from rest_framework.response import Response
@@ -13,13 +14,18 @@ def reviews(request):
         serializer = ReviewListSerializer(all_reviews, many=True)
         return Response(serializer.data)
     elif request.method == 'POST':
-        serializer = ReviewSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        print(request.data)
+        title = request.data.get('title')
+        content = request.data.get('content')
+        movie = get_object_or_404(Movie, pk=request.data.get('movie'))
+        review = Review(title=title,content=content,movie=movie, user=request.user)
+        review.save()
+        serializer = ReviewSerializer(review)
+        print(review)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-@api_view(['GET', 'DELETE', 'POST'])
+@api_view(['GET', 'DELETE', 'PUT'])
 def review_detail(request, review_pk):
     review = get_object_or_404(Review, pk=review_pk)
     if request.method == 'GET':
@@ -32,11 +38,14 @@ def review_detail(request, review_pk):
                 'delete': f'{review_pk}번 글이 성공적으로 삭제되었습니다.'
             }
             return Response(data, status=status.HTTP_204_NO_CONTENT) 
+    # title. content, movie 수정 가능 
     elif request.method == 'PUT':
-        serializer = ReviewSerializer(review, data=request.data)
-        if serializer.is_valid() and request.user == review.user:
-            serializer.save()
-            return Response(serializer.data)
+        review.title = request.data.get('title')
+        review.content = request.data.get('content')
+        review.movie = get_object_or_404(Movie, pk=request.data.get('movie'))
+        review.save()
+        serializer = ReviewSerializer(review)
+        return Response(serializer.data)
 
 
 @api_view(['GET', 'DELETE', 'PUT'])

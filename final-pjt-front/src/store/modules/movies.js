@@ -115,11 +115,11 @@ export default {
       })
       .catch(err => console.error(err.response))
     },
-    createMovieComment({ commit, getters }, { moviePk, content }) {
-      const comment = { content }
+    createMovieComment({ commit, getters }, { movieNum, content, rank }) {
+      const comment = { content, rank }
 
       axios({
-        url: drf.moviedetail.createmoviecomment(moviePk),
+        url: drf.moviedetail.createmoviecomment(movieNum),
         method: 'post',
         data: comment,
         headers: getters.authHeader,
@@ -129,11 +129,11 @@ export default {
       })
       .catch(err => console.error(err.response))
     },
-    updateComment({ commit, getters }, {moviePk, commentPk, content }) {
-      const comment = { content }
+    updateComment({ commit, getters }, {movieNum, commentPk, content, rank }) {
+      const comment = { content, rank }
 
       axios({
-        url: drf.moviedetail.moviecommentdetail(moviePk, commentPk),
+        url: drf.moviedetail.moviecommentdetail(movieNum, commentPk),
         method: 'put',
         data: comment,
         headers: getters.authHeader,
@@ -144,10 +144,10 @@ export default {
       .catch(err => console.error(err.response))
     },
 
-    deleteComment({ commit, getters }, { moviePk, commentPk }) {
+    deleteComment({ commit, getters }, { movieNum, commentPk }) {
       if (confirm('정말 삭제하시겠습니까?')) {
         axios({
-          url: drf.moviedetail.moviecommentdetail(moviePk, commentPk),
+          url: drf.moviedetail.moviecommentdetail(movieNum, commentPk),
           method: 'delete',
           data: {},
           headers: getters.authHeader,

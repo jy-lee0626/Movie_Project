@@ -23,12 +23,12 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: "MovieCommentItem",
-  props: { comment: Object },
+  props: { comment: Object, moviedetail: Object  },
   data() {
     return {
       isEditing: false,
       payload: {
-        moviePk: this.comment.movieDetail,
+        movieNum: this.moviedetail.movie_num,
         commentPk: this.comment.pk,
         content: this.comment.content
       },

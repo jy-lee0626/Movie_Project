@@ -150,16 +150,17 @@ def comment_detail(request, movie_num, comment_pk):
 
 # 댓글 작성, 댓글 목록 불러오기
 @api_view(['POST', 'GET'])
-def movie_comment(request, movie_pk):
-    movie = get_object_or_404(Movie, pk=movie_pk)
+def movie_comment(request, movie_num):
+    movie = get_object_or_404(Movie, movie_num=movie_num)
     if request.method =='POST':
-        serializer = MovieCommentSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save(movie_id=movie.pk)
-            comments = movie.comments.all()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        rank = request.data.get('rank')
+        content = request.data.get('content')
+        comment = MovieComment(movie=movie, rank=rank, content=content, user=request.user, movie_num=movie_num)
+        comment.save()
+        serializer = MovieCommentSerializer(comment)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
     elif request.method == 'GET':
-        comments = MovieComment.objects.all().filter(movie=movie_pk)
+        comments = MovieComment.objects.all().filter(movie_num=movie_num)
         serializer = MovieCommentSerializer(comments, many=True)
         return Response(serializer.data)
 

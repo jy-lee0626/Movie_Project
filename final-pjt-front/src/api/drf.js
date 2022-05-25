@@ -1,7 +1,7 @@
 const HOST = 'http://localhost:8000/api/v1/'
 
 const ACCOUNTS = 'accounts/'
-const ARTICLES = 'articles/'
+const COMMUNITY = 'community/'
 const COMMENTS = 'comments/'
 const MOVIES = 'movies/'
 const BASE_URL = 'https://api.themoviedb.org/3/'
@@ -16,13 +16,9 @@ export default {
     profile: username => HOST + ACCOUNTS + 'profile/' + username,
     recommendUser: username => HOST + ACCOUNTS + 'profile/' + username + '/user_match/',
   },
-  articles: {
-    articles: () => HOST + ARTICLES,
-    article: articlePk => HOST + ARTICLES + `${articlePk}/`,
-    likeArticle: articlePk => HOST + ARTICLES + `${articlePk}/` + 'like/',
-    comments: articlePk => HOST + ARTICLES + `${articlePk}/` + COMMENTS,
-    comment: (articlePk, commentPk) =>
-      HOST + ARTICLES + `${articlePk}/` + COMMENTS + `${commentPk}/`,
+  community: {
+    reviews: () => HOST + COMMUNITY + 'reviews/',
+    
   },
   movies: {
     movies: () => HOST + MOVIES,
@@ -42,14 +38,10 @@ export default {
   },
   moviedetail: {
     moviedetail: (movieNum) => HOST + MOVIES + `${movieNum}/`,
+    createmoviecomment: (movieNum) => HOST + MOVIES + `${movieNum}/` + COMMENTS,
+    moviecommentdetail: (movieNum, commentPk) => HOST + MOVIES + `${movieNum}/` + COMMENTS + `${commentPk}/`,
   },
   likemovie: {
     likemovie: (movieNum) => HOST + MOVIES + `${movieNum}/` +'like/',
   },
-  createmoviecomment: {
-    createmoviecomment: (moviePk) => HOST + MOVIES + `${moviePk}/` + COMMENTS,
-  },
-  moviecommentdetail: {
-    moviecommentdetail: (moviePk, commentPk) => HOST + MOVIES + `${moviePk}/` + COMMENTS + `${commentPk}/`,
-  }
 }
