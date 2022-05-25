@@ -13,10 +13,9 @@ class Movie(models.Model):
     movie_num = models.IntegerField(null=True)
     movie_like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies')
     like_count = models.IntegerField(default=0)
-
-
+    
 class MovieComment(models.Model):
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, default=1, related_name='comments')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     rank = models.FloatField()
     content = models.CharField(max_length=300)

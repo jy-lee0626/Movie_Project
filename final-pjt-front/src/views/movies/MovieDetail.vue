@@ -62,15 +62,13 @@
       </div>
     </div>
   <!-- --- -->
-    <movie-comment-form></movie-comment-form>
-    <movie-comment-item></movie-comment-item>
-    <movie-comment-list></movie-comment-list>
+    <!-- <movie-comment-form></movie-comment-form>
+    <movie-comment-item></movie-comment-item> -->
+    <movie-comment-list :comments="movieDetail.comments"></movie-comment-list>
   </div>
 </template>
 
 <script>
-import MovieCommentForm from '@/components/movies/MovieCommentForm.vue'
-import MovieCommentItem from '@/components/movies/MovieCommentItem.vue'
 import MovieCommentList from '@/components/movies/MovieCommentList.vue'
 import YoutubeList from '@/components/movies/YoutubeList'
 
@@ -79,8 +77,6 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'MovieDetail',
   components: {
-    MovieCommentForm,
-    MovieCommentItem,
     MovieCommentList,
     YoutubeList,
   },
@@ -91,6 +87,7 @@ export default {
       notifications: false,
       sound: true,
       widgets: false,
+      moviePk: this.$route.params.moviePk,
     }
   },
   filters: {
