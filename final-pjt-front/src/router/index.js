@@ -9,6 +9,8 @@ import TestView from '@/views/movies/TestView.vue'
 import MovieDetail from '@/views/movies/MovieDetail.vue'
 import SearchDataView from '@/views/movies/SearchDataView.vue'
 
+import ReviewsView from '@/views/community/ReviewsView.vue'
+
 import LoginView from '@/views/accounts/LoginView.vue'
 import LogoutView from '@/views/accounts/LogoutView.vue'
 import SignupView from '@/views/accounts/SignupView.vue'
@@ -72,6 +74,11 @@ const routes = [
   {
     path: '*',
     redirect: '/404'
+  },
+  {
+    path: '/community/',
+    name: 'ReviewsView',
+    component: ReviewsView
   },
   
 ]
