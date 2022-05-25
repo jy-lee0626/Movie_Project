@@ -11,6 +11,8 @@ import SearchDataView from '@/views/movies/SearchDataView.vue'
 
 import ReviewsView from '@/views/community/ReviewsView.vue'
 import ReviewDetail from '@/views/community/ReviewDetail.vue'
+import CreateReview from '@/views/community/CreateReview.vue'
+import EditReview from '@/views/community/EditReview.vue'
 
 import LoginView from '@/views/accounts/LoginView.vue'
 import LogoutView from '@/views/accounts/LogoutView.vue'
@@ -86,6 +88,16 @@ const routes = [
     name: 'ReviewDetail',
     component: ReviewDetail
   },
+  {
+    path: '/community/:reviewNum/edit',
+    name: 'EditReview',
+    component: EditReview
+  },
+  {
+    path: '/community/create',
+    name: 'CreateReview',
+    component: CreateReview
+  },
   
 ]
 
@@ -110,10 +122,6 @@ router.beforeEach((to, from, next) => {
     next({ name: 'login' })
   } else {
     next()
-  }
-
-  if (!isAuthRequired && isLoggedIn) {
-    next({ name: 'articles' })
   }
 })
 

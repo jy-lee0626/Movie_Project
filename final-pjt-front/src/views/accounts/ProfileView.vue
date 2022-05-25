@@ -1,7 +1,13 @@
 <template>
   <div>
+    
     <img :src="`${profile.profile_image}`" class="profile_image" alt="profile_image" style="width: 300px; ">
-    <h1>{{ profile.first_name }}님의 프로필</h1>
+    <h1>{{ profile.first_name }}
+      <br>
+      <small>
+        {{profile.username}}
+      </small>
+    </h1>
 
     <h2>작성한 글</h2>
       <p v-if="profile.review_set===[]">
