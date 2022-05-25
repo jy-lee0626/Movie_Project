@@ -39,14 +39,23 @@
             <div>
               <hr>
               <p>
-                <button class="btn btn-link" style="color: crimson;" @click="likeMovie(movieNum)" >
+                <!-- <button class="btn btn-link" style="color: white;" @click="likeMovie(movieNum)" >
                   <i class="fas fa-heart fa-2x heart"></i>
+                </button> -->
+                <button class="btn btn-link" style="color: white;" @click="likeMovie(movieNum)" >
+                    {{ likeCount }} likes
                 </button>
-                {{ likeCount }} likes
               </p>
-              <hr>
+          <div v-for="like in movieDetail.movie_like" :key="like">
+            <div v-if="currentUser.username === like.username">
+              <button class="btn btn-link" style="color: crimson;" @click="likeMovie(movieNum)" >
+                <i class="fas fa-heart fa-2x heart"></i>
+              </button>
             </div>
           </div>
+            </div>
+          </div>
+          <!-- <div v-if="currentUser.username in movieDetail.movie_like">True</div> -->
           <div class="movie-detail-lower">
           </div>
         </div>
@@ -85,7 +94,7 @@ export default {
   return value.substr(0, size) + '...';
   }},
   computed: {
-    ...mapGetters(['movieDetail', 'youtubeVideos']),
+    ...mapGetters(['movieDetail', 'youtubeVideos', 'currentUser']),
     likeCount() {
       return this.movieDetail.like_count
     },

@@ -16,6 +16,11 @@ class MovieListSerializer(serializers.ModelSerializer):
 # 영화상세정보
 class MovieSerializer(serializers.ModelSerializer):
 
+    class UserSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = User
+            fields = ('username', 'first_name', 'gender', 'profile_image')
+    movie_like = UserSerializer(many=True)
     class Meta:
         model = Movie
         fields = '__all__'
