@@ -1,28 +1,27 @@
 <template>
   <div>
-    <h1>Signup</h1>
-
     <account-error-list v-if="authError"></account-error-list>
 
-    <form @submit.prevent="signup(credentials)">
+    <div class="background_login">
+        <div class="shape_login"></div>
+        <div class="shape_login"></div>
+    </div>
+    <form class="form_login" @submit.prevent="signup(credentials)">
+      <h3>Signup Here</h3>
       <div>
-        <label for="username">아이디: </label>
-        <input  v-model="credentials.username" type="text" id="username" required/>
+        <input  class="input_login" placeholder="Username" v-model="credentials.username" type="text" id="username" required/>
       </div>
       <div>
-        <label for="password1">비밀번호: </label>
-        <input v-model="credentials.password1" type="password" id="password1" required />
+        <input class="input_login" placeholder="Password" v-model="credentials.password1" type="password" id="password1" required />
       </div>
       <div>
-        <label for="password2">비밀번호 확인:</label>
-        <input v-model="credentials.password2" type="password" id="password2" required />
+        <input class="input_login" placeholder="Confirm Password" v-model="credentials.password2" type="password" id="password2" required />
       </div>
       <div>
-        <label for="firstname">이름:</label>
-        <input v-model="credentials.first_name" type="text" id="first_name" required />
+        <input class="input_login" placeholder="Firstname" v-model="credentials.first_name" type="text" id="first_name" required />
       </div>
-      
-      <div class="form-check form-check-inline">
+
+      <div class="form-check form-check-inline mt-4">
         <input v-model="credentials.gender" class="form-check-input" type="radio" name="Male" id="Male" value="Male">
         <label class="form-check-label" for="Male">남자</label>
       </div>
@@ -30,14 +29,9 @@
         <input v-model="credentials.gender" class="form-check-input" type="radio" name="Female" id="Female" value="Female">
         <label class="form-check-label" for="Female">여자</label>
       </div>
-      
-      <!-- <div class="input-group mb-3">
-        <input type="file" class="form-control" id="profile">
-        <label class="input-group-text" for="profile">Upload</label>
-      </div> -->
-      <div>
-        <button>가입하기</button>
-      </div>
+
+
+        <button class="button_login" style="margin-top: 2rem;">Sign up</button>
     </form>
   </div>
 </template>
