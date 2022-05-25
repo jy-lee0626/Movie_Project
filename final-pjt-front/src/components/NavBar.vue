@@ -10,15 +10,6 @@
           <li class="nav-item active">
             <router-link class="nav-link" :to="{ name: 'MovieListView' }">Home</router-link>
           </li>
-          <!-- <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'nowplaying' }">현재 상영작</router-link>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">인기 영화</a>
-          </li> -->
-          <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'test' }">TEST</router-link>
-          </li>
           <li class="nav-item">
             <router-link class="nav-link" :to="{ name: 'ReviewsView' }">COMMUNITY</router-link>
           </li>

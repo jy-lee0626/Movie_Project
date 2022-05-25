@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div>HOME</div>
     <popular-list></popular-list>
     <now-playing-list></now-playing-list>
     <tvshow-list></tvshow-list>

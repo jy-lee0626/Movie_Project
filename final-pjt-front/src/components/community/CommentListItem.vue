@@ -9,11 +9,11 @@
       <button @click="onUpdate">Update</button> |
       <button @click="switchIsEditing">Cancle</button>
     </span>
-
     <span v-if="currentUser.username === comment.user.username && !isEditing">
       <button @click="switchIsEditing">Edit</button> |
       <button @click="deleteComment(payload)">Delete</button>
     </span>
+    <hr>
   </li>
 </template>
 
