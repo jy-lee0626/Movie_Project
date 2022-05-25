@@ -22,16 +22,16 @@
         재미있게 본 영화를 추천해주세요
         
       </p>
-      <div v-else>
-
-          <span v-for="movie in profile.like_movies" :key="movie.movie_num">
-            <router-link :to="{ name: 'moviedetail', params: { movieNum: movie.movie_num } }">
+      <div class="container d-flex" v-else>
+        <div class="row" >
+          <span class="m-1 col" v-for="movie in profile.like_movies" :key="movie.movie_num">
+            <router-link class="text-decoration-none text-white" :to="{ name: 'moviedetail', params: { movieNum: movie.movie_num } }">
               <img :src="`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${movie.poster_path}`" alt="poster" style="width: 120px; ">
               <br>
               {{movie.title}}
             </router-link>
           </span>
-
+        </div>
       </div>
     <hr>
     <h2>유저 추천</h2>
