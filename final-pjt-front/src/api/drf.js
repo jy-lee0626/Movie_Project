@@ -18,7 +18,7 @@ export default {
   },
   community: {
     reviews: () => HOST + COMMUNITY + 'reviews/',
-    
+    reviewDetail: (movieNum) => HOST + COMMUNITY + `reviews/${movieNum}`
   },
   movies: {
     movies: () => HOST + MOVIES,

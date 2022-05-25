@@ -19,6 +19,9 @@
           <li class="nav-item">
             <router-link class="nav-link" :to="{ name: 'test' }">TEST</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link" :to="{ name: 'ReviewsView' }">COMMUNITY</router-link>
+          </li>
         </ul>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0" v-if="isLoggedIn">
           <form class="form-inline active-purple" @submit.prevent="search(searchdata)">
