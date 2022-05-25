@@ -17,8 +17,11 @@ export default {
     recommendUser: username => HOST + ACCOUNTS + 'profile/' + username + '/user_match/',
   },
   community: {
+    likeReview: (reviewNum) => HOST + COMMUNITY + `reviews/${reviewNum}/like/`,
     reviews: () => HOST + COMMUNITY + 'reviews/',
-    reviewDetail: (movieNum) => HOST + COMMUNITY + `reviews/${movieNum}`
+    reviewDetail: (reviewNum) => HOST + COMMUNITY + `reviews/${reviewNum}`,
+    comments: (reviewNum) => HOST + COMMUNITY + `reviews/${reviewNum}/comments/`,
+    commentDetail: (reviewNum, commentNum) => HOST + COMMUNITY + `reviews/${reviewNum}/comments/${commentNum}`
   },
   movies: {
     movies: () => HOST + MOVIES,
