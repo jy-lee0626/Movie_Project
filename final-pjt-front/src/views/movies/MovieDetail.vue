@@ -81,12 +81,6 @@
             <!-- youtube -->
             <div class="movie-youtube-area">
               관련 영상
-          <div>
-            Likeit: {{ likeCount }} 
-            <br>
-            <button @click="likeMovie(movieNum)">좋아요</button>
-            {{ likecount }}
-          </div>
               <hr>
               <YoutubeList :title="movieDetail.title"/>
               {{ youtubeVideos }}
