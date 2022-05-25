@@ -10,6 +10,7 @@ import MovieDetail from '@/views/movies/MovieDetail.vue'
 import SearchDataView from '@/views/movies/SearchDataView.vue'
 
 import ReviewsView from '@/views/community/ReviewsView.vue'
+import ReviewDetail from '@/views/community/ReviewDetail.vue'
 
 import LoginView from '@/views/accounts/LoginView.vue'
 import LogoutView from '@/views/accounts/LogoutView.vue'
@@ -79,6 +80,11 @@ const routes = [
     path: '/community/',
     name: 'ReviewsView',
     component: ReviewsView
+  },
+  {
+    path: '/community/:reviewNum',
+    name: 'ReviewDetail',
+    component: ReviewDetail
   },
   
 ]
