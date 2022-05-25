@@ -40,14 +40,16 @@
         </div>
       </div>
     <hr>
-    <h2>유저 추천</h2>
-      <div>
-        <router-link :to="{ name: 'profile', params: { username: recommendUser.username } }">
-          <img link :src="`${recommendUser.profile_image}`" alt="profile_image" class="profile_image" style="width: 100px;">
-        </router-link>
-        <p>
-          {{ recommendUser.first_name}}
-        </p>
+    <div v-if="currentUser.username === profile.username">
+      <h2>유저 추천</h2>
+        <div>
+          <router-link :to="{ name: 'profile', params: { username: recommendUser.username } }">
+            <img link :src="`${recommendUser.profile_image}`" alt="profile_image" class="profile_image" style="width: 100px;">
+          </router-link>
+          <p>
+            {{ recommendUser.first_name}}
+          </p>
+        </div>
       </div>
   </div>
 </template>
@@ -63,7 +65,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['profile', 'recommendUser'])
+    ...mapGetters(['profile', 'recommendUser', 'currentUser'])
   },
   methods: {
     ...mapActions(['fetchProfile', 'fetchRecommendUser']),

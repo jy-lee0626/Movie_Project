@@ -11,9 +11,6 @@
         </button>
         <div class="slider">
           <router-link class="img__item" v-for="nowplay in nowplaying.slice(0, 20)" :key="nowplay.id" :to="{ name: 'moviedetail', params: { movieNum: nowplay.movie_num } }" tag="img" :src="`https://www.themoviedb.org/t/p/w220_and_h330_bestv2${nowplay.poster_path}`" alt="포스터 없음">
-            <div class="middle">
-              <div class="text">John Doe</div>
-            </div>
           </router-link>
         </div>
         <button class="handle right-handle">
@@ -72,6 +69,7 @@ body {
   margin: 0 var(--img-gap);
   transform: translateX(calc(var(--slider-index) * -100%));
   transition: transform 250ms ease-in-out;
+
 }
 
 .slider > img {
@@ -174,10 +172,11 @@ body {
 }
 
 .img__item:hover {
+  display: block;
   margin: 0 40px;
   cursor: pointer;
   -webkit-filter: brightness(50%);
-  transition-delay: 0.4s;
+  transition-delay: 0.35s;
   transform: scale(1.2);
 }
 

@@ -34,7 +34,7 @@
             </div>
             <hr>
             <div class="movie-detail-overview-body">
-              {{ movieDetail.overview | maxlength(500) }}
+              {{ movieDetail.overview | maxlength(710) }}
             </div>
             <div>
               <hr>
