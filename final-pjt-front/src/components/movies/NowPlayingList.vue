@@ -175,7 +175,7 @@ body {
   display: block;
   margin: 0 40px;
   cursor: pointer;
-  -webkit-filter: brightness(50%);
+  -webkit-filter: brightness(55%);
   transition-delay: 0.35s;
   transform: scale(1.2);
 }
