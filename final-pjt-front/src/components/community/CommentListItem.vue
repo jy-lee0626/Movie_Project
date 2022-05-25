@@ -11,7 +11,7 @@
     </span>
     <span v-if="currentUser.username === comment.user.username && !isEditing">
       <button @click="switchIsEditing">Edit</button> |
-      <button @click="deleteComment(payload)">Delete</button>
+      <button @click="deleteReviewComment(payload)">Delete</button>
     </span>
     <hr>
   </li>
@@ -37,12 +37,12 @@ export default {
     ...mapGetters(['currentUser']),
   },
   methods: {
-    ...mapActions(['updateComment', 'deleteComment']),
+    ...mapActions(['updateReviewComment', 'deleteReviewComment']),
     switchIsEditing() {
       this.isEditing = !this.isEditing
     },
     onUpdate() {
-      this.updateComment(this.payload)
+      this.updateReviewComment(this.payload)
       this.isEditing = false
     }
   },

@@ -58,7 +58,8 @@ def comments(request, review_pk):
         review = get_object_or_404(Review, pk=review_pk)
         comment = Comment(user=request.user, content=request.data.get('content'), review=review)
         comment.save()
-        serializer = CommentSerializer(comment)
+        comments = Comment.objects.all().filter(review=review_pk)
+        serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data)
 
 
@@ -69,10 +70,9 @@ def comment_detail(request, review_pk, comment_pk):
     if request.method == 'DELETE':
         if request.user == comment.user: # 글 작성자만 삭제 가능
             comment.delete()
-            data = {
-                'delete': f'{comment_pk}번 댓글이 성공적으로 삭제되었습니다.'
-            }
-            return Response(data, status=status.HTTP_204_NO_CONTENT)
+            comments = Comment.objects.all().filter(review=review_pk)
+            serializer = CommentSerializer(comments, many=True)
+            return Response(serializer.data)
         else: 
             data = {
                 'delete': '권한이 없습니다.'
@@ -82,7 +82,8 @@ def comment_detail(request, review_pk, comment_pk):
         if request.user == comment.user:
             comment.content = request.data.get('content')
             comment.save()
-            serializer = CommentSerializer(comment)
+            comments = Comment.objects.all().filter(review=review_pk)
+            serializer = CommentSerializer(comments, many=True)
             return Response(serializer.data)
         else: # 글 작성자가 아닐 때
             data = {
