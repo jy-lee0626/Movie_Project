@@ -152,6 +152,8 @@ def comment_detail(request, movie_num, comment_pk):
 def create_comment(request, movie_pk):
     user = request.user
     movie = get_object_or_404(Movie, pk=movie_pk)
+    print(request.data)
+    print(MovieCommentSerializer)
     serializer = MovieCommentSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
         serializer.save(movie=movie, user=user)
