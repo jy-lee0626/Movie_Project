@@ -71,6 +71,12 @@
               {{ movieDetail.overview | maxlength(430, '...') }}
             </div>
           </div>
+          <div>
+            Likeit: {{ likeCount }} 
+            <br>
+            <button @click="likeMovie(movieNum)">좋아요</button>
+            {{ likeCount }}
+          </div>
           <div class="movie-detail-lower">
             <!-- youtube -->
             <div class="movie-youtube-area">
@@ -90,15 +96,13 @@
       </div>
     </div>
   <!-- --- -->
-    <movie-comment-form></movie-comment-form>
-    <movie-comment-item></movie-comment-item>
-    <movie-comment-list></movie-comment-list>
+    <!-- <movie-comment-form></movie-comment-form>
+    <movie-comment-item></movie-comment-item> -->
+    <movie-comment-list :comments="movieDetail.comments"></movie-comment-list>
   </div>
 </template>
 
 <script>
-import MovieCommentForm from '@/components/movies/MovieCommentForm.vue'
-import MovieCommentItem from '@/components/movies/MovieCommentItem.vue'
 import MovieCommentList from '@/components/movies/MovieCommentList.vue'
 import YoutubeList from '@/components/movies/YoutubeList'
 
@@ -107,8 +111,6 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'MovieDetail',
   components: {
-    MovieCommentForm,
-    MovieCommentItem,
     MovieCommentList,
     YoutubeList,
   },
@@ -119,14 +121,15 @@ export default {
       notifications: false,
       sound: true,
       widgets: false,
+      moviePk: this.$route.params.moviePk,
     }
   },
-  props: {
-    movieDetail: {
-      type: Object,
-      required: true
-    },
-  },
+  // props: {
+  //   movieDetail: {
+  //     type: Object,
+  //     required: true
+  //   },
+  // },
   filters: {
   maxlength: function (text, stop, clamp) {
     return text.slice(0, stop) + (stop < text.length ? clamp || '...' : '')
