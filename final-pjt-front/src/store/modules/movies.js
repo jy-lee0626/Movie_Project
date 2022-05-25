@@ -6,7 +6,7 @@ import _ from 'lodash'
 import router from '@/router'
 
 const YOUTUBE_URL = 'https://www.googleapis.com/youtube/v3/search'
-const YOUTUBE_KEY = 'AIzaSyB61ki4KeefQptF3Atc9TF1JyOiK4CQ_Ms'
+const YOUTUBE_KEY = 'AIzaSyBRI8I7QM9Mer_jkhHTIddxIZKVGg7x9b0'
 
 export default {
   state: {
@@ -159,6 +159,7 @@ export default {
       }
     },
     searchYoutube: function ({ commit }, searchText) {
+      console.log(searchText)
       const params = {
         q: searchText+'movie',
         key: YOUTUBE_KEY,
@@ -172,7 +173,6 @@ export default {
       })
       .then(res => {
         commit('SEARCH_YOUTUBE', res)
-        console.log(res.data)
       })
       .catch(err => console.log(err))
     },

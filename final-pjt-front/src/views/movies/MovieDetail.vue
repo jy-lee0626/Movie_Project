@@ -1,40 +1,6 @@
 <template>
   <div>
-    <!-- <div class="container">
-      <div class="row detail_box">
-        <img class="detail_img col-6 col-lg-12" :src="`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${movieDetail.poster_path}`" alt="..." style="max-width: 300px; max-height: 450px;">
-        <div class="detail_text col-6 col-lg-12">
-          <h1>{{ movieDetail.title }}</h1>
-          <p>개봉일: {{ movieDetail.release_date }}</p>
-          <div>
-          <p>overview: {{ movieDetail.overview | maxlength(300, '...') }}</p>
-          </div>
-          <p>평점: {{ movieDetail.vote_average }}</p>
-          <p>{{ movieDetail.genres }}</p>
-        <div>
-          Likeit: {{ likeCount }} 
-          <br>
-          <button @click="likeMovie(movieNum)">좋아요</button>
-          {{ likecount }}
-        </div>
-      </div>
-      </div>
-    </div>
-    <div>
-      <p>코멘트</p>
-      <p>vue파일 만들어야됨</p>
-    </div> -->
-    <!-- ---- -->
     <div class="movie-detail-card">
-      <div class="movie-detail-toolbar">
-        <!-- <v-btn
-          icon
-          dark
-          @click="dialog = false">
-          <v-icon>mdi-close</v-icon>
-        </v-btn> -->
-        <!-- <img id="logo-image" src="@/assets/images/logo.png"/> -->
-      </div>
       <div class="movie-detail-body">
         <div class="movie-detail-poster">
           <img :src="`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${movieDetail.poster_path}`" alt="포스터 없음">
@@ -68,21 +34,27 @@
             </div>
             <hr>
             <div class="movie-detail-overview-body">
-              {{ movieDetail.overview | maxlength(430, '...') }}
+              {{ movieDetail.overview | maxlength(430) }}
+            </div>
+            <div>
+              Likeit: {{ likeCount }} 
+              <br>
+              <button class="btn btn-link" style="color: crimson;" @click="likeMovie(movieNum)" >
+                <i class="fas fa-heart fa-2x"></i>
+              </button>
+              <!-- <button @click="likeMovie(movieNum)">
+                <span class="material-icons orange600">
+                favorite
+                </span>
+              </button> -->
             </div>
           </div>
           <div class="movie-detail-lower">
             <!-- youtube -->
             <div class="movie-youtube-area">
               관련 영상
-          <div>
-            Likeit: {{ likeCount }} 
-            <br>
-            <button @click="likeMovie(movieNum)">좋아요</button>
-            {{ likecount }}
-          </div>
               <hr>
-              <YoutubeList :title="movieDetail.title"/>
+              <youtube-list></youtube-list>
               {{ youtubeVideos }}
             </div>
           </div>
@@ -121,17 +93,16 @@ export default {
       widgets: false,
     }
   },
-  props: {
-    movieDetail: {
-      type: Object,
-      required: true
-    },
-  },
   filters: {
-  maxlength: function (text, stop, clamp) {
-    return text.slice(0, stop) + (stop < text.length ? clamp || '...' : '')
-    }
-  },
+  maxlength: function (value, size) {
+  if (!value) return '';
+  value = value.toString();
+
+  if (value.length <= size) {
+    return value;
+  }
+  return value.substr(0, size) + '...';
+  }},
   computed: {
     ...mapGetters(['movieDetail', 'youtubeVideos']),
     likeCount() {
@@ -139,10 +110,11 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['fetchMovieDetail', 'likeMovie'])
+    ...mapActions(['fetchMovieDetail', 'likeMovie', 'searchYoutube'])
   },
   created() {
     this.fetchMovieDetail(this.movieNum)
+    this.searchYoutube(this.movieDetail.title)
   },
 }
 </script>

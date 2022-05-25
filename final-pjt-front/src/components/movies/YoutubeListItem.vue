@@ -1,5 +1,5 @@
 <template>
-  <li class="youtube-list-item">
+  <!-- <li class="youtube-list-item">
     <v-dialog
       v-model="dialog"
       hide-overlay
@@ -17,23 +17,27 @@
         </div>
       </div>
     </v-dialog>
-  </li>
+  </li> -->
+  <div>
+    hi
+    {{ video }}
+  </div>
 </template>
 
 <script>
 export default {
   name: 'YoutubeListItem',
-  data() {
-    return {
-      dialog: false
-    }
-  },
-  props: {
-    video: {
-      type: Object,
-      required: true
-    }
-  },
+  // data() {
+  //   return {
+  //     dialog: false
+  //   }
+  // },
+  // props: {
+  //   video: {
+  //     type: Object,
+  //     required: true
+  //   }
+  // },
   computed: {
     imgSrc() {
       return this.video.snippet.thumbnails.high.url

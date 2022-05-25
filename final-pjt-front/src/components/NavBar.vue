@@ -21,9 +21,9 @@
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0" v-if="isLoggedIn">
-          <form class="form-inline active-purple" @submit.prevent="search(searchdata)">
-            <input class="form-control form-control-sm mt-2 mr-3" type="search" role="link" v-model="searchdata" placeholder="Search" aria-label="Search">
-            <i class="fas fa-search" aria-hidden="true"></i>
+          <form class="form-inline active-purple search_form" @submit.prevent="search(searchdata)">
+            <input class="form-control form-control-sm search_input_form mt-2" type="search" role="link" v-model="searchdata" placeholder="Search" aria-label="Search">
+            <button class="search_button"><i class="fas search_icon fa-search"></i></button>
           </form>
           <li class="nav-item mr-2 user_css">
             <router-link class="nav-link text-white" :to="{ name: 'profile', params: { username } }">
@@ -95,5 +95,20 @@
 }
 .active-purple .fa, .active-purple-2 .fa {
   color: #ce93d8;
+}
+.search_icon {
+  color: white;
+  margin: 0.8rem 0.5rem 0 0;
+}
+.search_button {
+  background-color: black;
+}
+.search_form {
+  margin-right: 0.5rem;
+  display: flex;
+  height: 20px;
+}
+.search_input_form {
+  margin-right: 0.5rem;
 }
 </style>

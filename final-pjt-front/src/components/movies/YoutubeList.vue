@@ -1,36 +1,29 @@
 <template>
-  <ul class="youtube-list">
-    <YoutubeListItem
-      v-for="(video, idx) in youtubeVideos"
-      :key="idx"
-      :video="video"
-    />
-  </ul>
+  <div>
+    <ul class="youtube-list">
+      <YoutubeListItem
+        v-for="(video, idx) in youtubeVideos"
+        :key="idx"
+        :video="video"
+      />
+    </ul>
+  </div>
+  
 </template>
 
 <script>
-import YoutubeListItem from '@/components/movies/YoutubeListItem'
 import { mapState } from 'vuex'
 
 export default {
   name: 'YoutubeList',
-  props: {
-    title: {
-      type: String,
-      required: true
-    }
-  },
-  components: {
-    YoutubeListItem
-  },
   computed: {
     ...mapState([
       'youtubeVideos'
     ])
   },
-  created() {
-    this.$store.dispatch('searchYoutube', this.title)
-  },
+  // created() {
+  //   this.$store.dispatch('searchYoutube', this.title)
+  // },
 }
 </script>
 
