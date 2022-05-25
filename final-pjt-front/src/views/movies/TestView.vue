@@ -1,6 +1,7 @@
 <template>
   <div>
     <div>TestVue</div>
+    <i class="material-icons">&#xE87C;</i>1
     <testvue></testvue>
   </div>
 </template>
