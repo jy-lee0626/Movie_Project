@@ -36,6 +36,68 @@ export default {
   created() {
     this.fetchUpcoming()
   },
+  updated() { 
+    throttleProgressBar
+    const throttleProgressBar = throttle(() => {
+      document.querySelectorAll(".progress-bar_css").forEach(calculateProgressBar)
+    }, 250)
+    window.addEventListener("resize", throttleProgressBar)
+
+    document.querySelectorAll(".progress-bar_css").forEach(calculateProgressBar)
+
+    function calculateProgressBar(progressBar) {
+      progressBar.innerHTML = ""
+      const slider = progressBar.closest(".row_css").querySelector(".slider")
+      const itemCount = slider.children.length
+      const itemsPerScreen = parseInt(
+        getComputedStyle(slider).getPropertyValue("--items-per-screen")
+      )
+      let sliderIndex = parseInt(
+        getComputedStyle(slider).getPropertyValue("--slider-index")
+      )
+      const progressBarItemCount = Math.ceil(itemCount / itemsPerScreen)
+      if (sliderIndex >= progressBarItemCount) {
+        slider.style.setProperty("--slider-index", progressBarItemCount - 1)
+        sliderIndex = progressBarItemCount - 1
+      }
+      // console.log(progressBarItemCount)
+      for (let i = 0; i < progressBarItemCount; i++) {
+        const barItem = document.createElement("div")
+        barItem.classList.add("progress-item")
+        if (i === sliderIndex) {
+          barItem.classList.add("active")
+        }
+        progressBar.append(barItem)
+      }
+    }
+
+    function throttle(cb, delay = 1000) {
+      let shouldWait = false
+      let waitingArgs
+      const timeoutFunc = () => {
+        if (waitingArgs == null) {
+          shouldWait = false
+        } else {
+          cb(...waitingArgs)
+          waitingArgs = null
+          setTimeout(timeoutFunc, delay)
+        }
+      }
+
+      return (...args) => {
+        if (shouldWait) {
+          waitingArgs = args
+          return
+        }
+
+        cb(...args)
+        shouldWait = true
+        setTimeout(timeoutFunc, delay)
+      }
+    }
+    
+    document.querySelectorAll(".progress-bar_css").forEach(calculateProgressBar)
+  },
 }
 </script>
 
