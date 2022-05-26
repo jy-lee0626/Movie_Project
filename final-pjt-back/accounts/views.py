@@ -23,7 +23,7 @@ def user_match(request, username):
     movie_count = 0
     match = None
     for other in all_users:
-        if other.pk==user.pk: # gender로 바꿔서 쓸 수도 있음
+        if other.gender==user.gender: # gender로 바꿔서 쓸 수도 있음
             continue
         cnt = 0
         for movie in user.like_movies.all():
