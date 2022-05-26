@@ -11,7 +11,7 @@
     <input type="number" v-model="payload.rank">
     <input type="text" v-model="payload.content">
     <button @click="onUpdate">Update</button>
-    <button @click="switchIsEditing">Cancel</button>
+    <!-- <button @click="switchIsEditing">Cancel</button> -->
   </span>
   <span v-if="currentUser.username === comment.user.username && !isEditing">
     <button @click="switchIsEditing">Edit</button>
