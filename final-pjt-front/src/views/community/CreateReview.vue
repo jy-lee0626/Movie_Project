@@ -2,6 +2,7 @@
   <div>
     <h1 class="mb-4">리뷰 작성</h1>
     <hr>
+
     <ReviewForm :review="review" action="create" />
   </div>
 </template>
@@ -23,4 +24,6 @@
   }
 </script>
 
-<style></style>
+<style>
+
+</style>

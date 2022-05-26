@@ -4,7 +4,12 @@ from django.contrib.auth import get_user_model
 
 
 class ReviewListSerializer(serializers.ModelSerializer):
-
+    class UserSerializer(serializers.ModelSerializer):           
+        class Meta: 
+            model = get_user_model()
+            fields = ('username', 'first_name', 'gender', 'pk','profile_image')
+    
+    user = UserSerializer()
     class Meta: 
         model = Review
         fields = '__all__'

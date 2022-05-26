@@ -1,6 +1,30 @@
 <template>
   <div>
-    <ul class="review_list p-0">
+    <div>
+      <table class="table" style="color: white;">
+        <thead>
+          <tr>
+            <th scope="col">글쓴이</th>
+            <th scope="col">제목</th>
+            <th scope="col" class="w-25">등록 시간</th>
+          </tr>
+        </thead>
+        <tbody >
+          
+          <tr v-for="review in reviewlist" :key="review.id" style="position: relative;">
+            <th scope="row" style="font-weight: normal;">{{review.user.first_name}}</th>
+            <td style="font-weight: normal;">
+              <router-link :to="{ name: 'ReviewDetail', params: { reviewNum: review.id } }" style="text-decoration: none; color: white;">
+                {{ review.title }} 
+              </router-link></td>
+            <td  style="font-size: 0.8rem;">{{review.created_at|formatDate}}</td>
+            
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <!-- <ul class="review_list p-0">
       <li v-for="review in reviewlist" :key="review.pk" 
       class="review-lisat-item" style="position: relative;">
         <router-link :to="{ name: 'ReviewDetail', params: { reviewNum: review.id } }"
@@ -8,7 +32,7 @@
         color: white; 
         font-weight: bold; 
         margin-right: 1rem;">
-          {{ review.title }} 
+          {{ review.id }} 
         </router-link>
 
         <span 
@@ -17,7 +41,7 @@
         </span>
         <hr>
       </li>
-    </ul> 
+    </ul>  -->
   </div>
 </template>
 

@@ -128,7 +128,6 @@ export default {
 
 /* --- */
 .movie-detail-card {
-  font-family: 'Noto Sans KR', sans-serif;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;

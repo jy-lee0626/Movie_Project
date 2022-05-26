@@ -17,7 +17,6 @@
         <h4 style="display: inline; font-size: 1.8rem; font-weight: bold;">제목</h4>
         <h4 style="display: inline; font-size: 1.8rem; font-weight: bold; position: absolute;  right: 10rem;">작성일</h4>
       </div>
-
       <ReviewList />
     </div>
   </div>
@@ -35,5 +34,12 @@ export default {
 </script>
 
 <style>
-
+.review-list-card {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  min-height: 100%;
+  margin: auto;
+  height: auto;
+}
 </style>

@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'movies',
     'community',
     'accounts',
+    # pagination
+    # 'community.apps.CommunityConfig',
 
     # third party
     'django_extensions',
@@ -60,6 +62,8 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    # 'PAGE_SIZE': 15,
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
