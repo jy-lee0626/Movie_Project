@@ -1,16 +1,30 @@
 from rest_framework import serializers
 from dj_rest_auth.registration.serializers import RegisterSerializer
 from movies.serializers import MovieSerializer
-from community.serializers import ReviewSerializer
+from movies.models import Movie
+from community.models import Review
 from .models import User
 
 class ProfileSerializer(serializers.ModelSerializer):
     profile_image = serializers.ImageField(use_url=True)
+
+    class MovieSerializer(serializers.ModelSerializer):
+
+        class Meta:
+            model = Movie
+            fields = ('movie_num', 'id', 'poster_path', )
+
+    class ReviewSerializer(serializers.ModelSerializer):
+
+        class Meta:
+            model = Review
+            fields = ('id', 'title')
+
     like_movies = MovieSerializer(many=True)
     review_set = ReviewSerializer(many=True)
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'gender', 'like_movies', 'profile_image', 'review_set', 'comment_set')
+        fields = ('username', 'first_name', 'gender', 'like_movies', 'profile_image', 'review_set')
 
     def get_image_url(self, profile):
         request = self.context.get('request')

@@ -11,12 +11,13 @@ class ReviewListSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    class UserSerializer(serializers.ModelSerializer):           
-        class Meta: 
+    class ProfileSerializer(serializers.ModelSerializer):
+        profile_image = serializers.ImageField(use_url=True)
+        class Meta:
             model = get_user_model()
-            fields = ('username', 'first_name', 'gender', 'pk')
+            fields = ('username', 'first_name', 'gender', 'pk', 'profile_image')
     
-    user = UserSerializer()
+    user = ProfileSerializer()
     class Meta: 
         model = Comment
         fields = '__all__'
@@ -25,7 +26,7 @@ class ReviewSerializer(serializers.ModelSerializer):
     class UserSerializer(serializers.ModelSerializer):           
         class Meta: 
             model = get_user_model()
-            fields = ('username', 'first_name', 'gender', 'pk')
+            fields = ('username', 'first_name', 'gender', 'pk','profile_image')
     
     comment_set = CommentSerializer(many=True)
     user = UserSerializer()

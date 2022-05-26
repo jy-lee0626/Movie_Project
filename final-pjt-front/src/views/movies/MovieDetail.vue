@@ -33,8 +33,11 @@
               줄거리
             </div>
             <hr>
-            <div class="movie-detail-overview-body">
+            <div v-if="movieDetail.overview" class="movie-detail-overview-body">
               {{ movieDetail.overview | maxlength(760) }}
+            </div>
+            <div v-else class="movie-detail-overview-body">
+              등록된 줄거리가 없습니다. 
             </div>
             <div>
               <hr>
