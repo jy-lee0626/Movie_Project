@@ -3,8 +3,8 @@
   <router-link :to="{ name: 'profile', params: { username: comment.user.username } }">
   {{ comment.user.username }}
   </router-link>:
-  <span v-if="!isEditing">rank: {{ payload.rank }}</span>
-  <span v-if="!isEditing">comment: {{ payload.content }}</span>
+  <span  v-if="!isEditing">comment: {{ payload.content }}</span>
+  <span  v-if="!isEditing">rank: {{ payload.rank }}</span>
 
   <span v-if="isEditing">
     <input type="number" v-model="payload.rank">

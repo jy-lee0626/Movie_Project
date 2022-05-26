@@ -1,10 +1,10 @@
 <template>
   <div>
     <h1>Articles</h1>
-    <ReviewList />
     <router-link :to="{ name: 'CreateReview'}">
-      새 리뷰 작성
+      리뷰 작성
     </router-link>
+    <ReviewList />
   </div>
 </template>
 
