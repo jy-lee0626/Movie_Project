@@ -1,7 +1,7 @@
 <template>
   <div>
     <account-error-list v-if="authError"></account-error-list>
-
+    <div style="height: 670px;"></div>
     <div class="background_login">
         <div class="shape_login"></div>
         <div class="shape_login"></div>

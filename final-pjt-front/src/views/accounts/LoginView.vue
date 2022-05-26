@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div style="height: 670px;"></div>
     <account-error-list v-if="authError"></account-error-list>
     <div class="background_login">
         <div class="shape_login"></div>
