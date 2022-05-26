@@ -26,7 +26,7 @@ export default {
   },
 
   actions: {
-    fetchReviews({ commit, getters }) {
+    fetchReviews({ commit, getters }, ) {
       axios({
         url: drf.community.reviews(),
         method: 'get',

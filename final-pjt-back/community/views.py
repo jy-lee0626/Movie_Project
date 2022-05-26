@@ -1,26 +1,37 @@
 from django.shortcuts import get_list_or_404, get_object_or_404, render
 from .models import Review, Comment
-from movies.models import Movie
 from .serializers import *
-from rest_framework import status
+from rest_framework import status, viewsets
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from django.core.paginator import Paginator
 
+
+class ReviewPagination(PageNumberPagination):
+    page_size = 15
+
+class ReviewViewSet(viewsets.ModelViewSet):
+    pagination_class = ReviewPagination
+    serializer_class = ReviewSerializer
+    queryset = Review.objects.all()
 
 @api_view(['GET', 'POST'])
 def reviews(request): 
     if request.method == 'GET':
         all_reviews = Review.objects.order_by('-created_at')
-        serializer = ReviewListSerializer(all_reviews, many=True)
+        paginator = Paginator(all_reviews, 15)
+        page_number = request.data.get('page')
+        print(page_number)
+        page_obj = paginator.get_page(page_number)
+        serializer = ReviewListSerializer(page_obj, many=True)
         return Response(serializer.data)
     elif request.method == 'POST':
-        print(request.data)
         title = request.data.get('title')
         content = request.data.get('content')
         review = Review(title=title,content=content, user=request.user)
         review.save()
         serializer = ReviewSerializer(review)
-        print(review)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
