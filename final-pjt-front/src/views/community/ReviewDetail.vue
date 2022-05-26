@@ -21,7 +21,6 @@
       <div class="content_box py-2 px-3">
         <p>
           {{ review.content }}
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto veniam consectetur distinctio sequi, impedit harum culpa maxime non aspernatur minus laborum, aut, omnis accusantium recusandae quos. Ipsam quasi mollitia accusantium!
         </p>
       </div>
       <hr>
@@ -41,7 +40,7 @@
         </button>
         {{ likeCount }} 명이 이 글을 좋아합니다.
       </div>
-     
+    
 
     </div>
     
