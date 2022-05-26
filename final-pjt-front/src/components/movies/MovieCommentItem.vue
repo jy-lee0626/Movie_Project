@@ -7,12 +7,12 @@
   <span  v-if="!isEditing">rank: {{ payload.rank }}</span>
 
   <span v-if="isEditing">
+    <p>test</p>
     <input type="number" v-model="payload.rank">
     <input type="text" v-model="payload.content">
     <button @click="onUpdate">Update</button>
     <button @click="switchIsEditing">Cancel</button>
   </span>
-  <!-- <div>{{ currentUser }}</div> -->
   <span v-if="currentUser.username === comment.user.username && !isEditing">
     <button @click="switchIsEditing">Edit</button>
     <button @click="deleteComment(payload)">Delete</button>
@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     ...mapActions(['updateComment', 'deleteComment']),
-    switchEditing() {
+    switchIsEditing() {
       this.isEditing = !this.isEditing
     },
     onUpdate() {
