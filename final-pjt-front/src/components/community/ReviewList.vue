@@ -4,9 +4,9 @@
       <table class="table" style="color: white;">
         <thead>
           <tr>
-            <th scope="col">글쓴이</th>
-            <th scope="col">제목</th>
-            <th scope="col" class="w-25">등록 시간</th>
+            <th scope="col" style="font-size: 1.3rem;">글쓴이</th>
+            <th scope="col" style="font-size: 1.3rem;">제목</th>
+            <th scope="col" class="w-25" style="font-size: 1.3rem;">등록 시간</th>
           </tr>
         </thead>
         <tbody >
