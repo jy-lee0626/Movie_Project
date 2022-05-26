@@ -23,7 +23,7 @@
 
   export default {
     name: 'App',
-    components: { NavBar },
+    components: { NavBar, },
     methods: {
       ...mapActions(['fetchCurrentUser'])
     },
@@ -35,6 +35,7 @@
 
 
 <style>
+/* html, body {    margin: 0;    height: 100%;    overflow: hidden;} */
 #app {
   /* font-family: Avenir, Helvetica, Arial, sans-serif; */
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -44,11 +45,11 @@
   color: #fff;
 }
 
-#wrapper{
+/* #wrapper{
   height: auto;
   min-height: 100%;
   padding-bottom: 20rem;
-}
+} */
 
 nav {
   padding: 30px;
