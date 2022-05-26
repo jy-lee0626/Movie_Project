@@ -2,7 +2,7 @@
   <div class="movie-comment-list">
     <hr>
     <movie-comment-form :moviedetail="moviedetail"></movie-comment-form>
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center m-2" id="comment_list_2">
       <ul class="comment_list">
         <movie-comment-item
         v-for="comment in comments"
@@ -33,5 +33,8 @@ export default {
   align-items: center;
   height: 4rem;
   width: 50rem;
+}
+#comment_list_2 {
+  height: auto;
 }
 </style>

@@ -50,9 +50,9 @@ export default {
   --img-gap: .25rem;
 }
 
-/* body {
+body {
   margin: 0;
-} */
+}
 
 .container_css {
   display: flex;
