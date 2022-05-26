@@ -1,7 +1,7 @@
 <template>
 <li class="movie-comment-item">
   <router-link :to="{ name: 'profile', params: { username: comment.user.username } }">
-  {{ comment.user.username }}
+  {{ comment.user.first_name }}
   </router-link>:
   <span  v-if="!isEditing">comment: {{ payload.content }}</span>
   <span  v-if="!isEditing">rank: {{ payload.rank }}</span>
