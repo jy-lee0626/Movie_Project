@@ -19,7 +19,7 @@ class MovieCommentSerializer(serializers.ModelSerializer):
     class UserSerializer(serializers.ModelSerializer):
         class Meta:
             model = User
-            fields = ('username', 'first_name', 'gender', 'pk')
+            fields = ('username', 'first_name', 'gender', 'pk', 'profile_image')
 
     user = UserSerializer()
 

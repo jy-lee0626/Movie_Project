@@ -13,7 +13,7 @@
 
           <input class="d-block w-75 m-2" type="text" id="comment" v-model="content" required>
 
-          <button class="d-block btn btn-primary m-2">등록</button>
+          <button class="d-block btn btn-primary m-2" style="margin-left: 4rem;">등록</button>
 
 
         </form>

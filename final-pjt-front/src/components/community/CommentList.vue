@@ -1,5 +1,7 @@
 <template>
   <div >
+    <CommentListForm/>
+    <hr>
     <div>
       <CommentListItem
         v-for="comment in comments" 
@@ -8,7 +10,6 @@
       />        
     </div>
 
-    <CommentListForm/>
   </div>
 </template>
 

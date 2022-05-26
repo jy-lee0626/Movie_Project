@@ -19,7 +19,9 @@
 
     </div>
     <h2>작성한 글</h2>
-      <div v-if="!profile.review_set.length">
+    <hr>
+      <p v-if="!profile.review_set.length">
+
         작성한 글이 없습니다.
       </div>
       <div v-else>

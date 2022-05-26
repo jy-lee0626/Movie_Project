@@ -9,6 +9,14 @@
         </router-link>
       </div>
       <hr>
+      <!-- <div class="d-flex justify-content-center mt-3">
+        <h4 style="margin-left: 35.5rem; margin-right: 7.5rem; font-weight: bold;">제목</h4>
+        <h4 style="padding-left: 25rem; font-weight: bold;">작성일</h4>
+      </div> -->
+      <div class="my-3" style="position: relative; border-bottom: solid; padding-bottom: 1rem;">
+        <h4 style="display: inline; font-size: 1.8rem; font-weight: bold;">제목</h4>
+        <h4 style="display: inline; font-size: 1.8rem; font-weight: bold; position: absolute;  right: 10rem;">작성일</h4>
+      </div>
       <ReviewList />
     </div>
   </div>
