@@ -37,6 +37,7 @@ export default {
   created() {
     this.fetchNowplaying()
   },
+  
 }
 </script>
 
@@ -50,9 +51,9 @@ export default {
   --img-gap: .25rem;
 }
 
-/* body {
+body {
   margin: 0;
-} */
+}
 
 .container_css {
   display: flex;

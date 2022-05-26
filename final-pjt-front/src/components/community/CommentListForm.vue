@@ -21,6 +21,7 @@
     </div>
 
   </div>
+
 </template>
 
 <script>
@@ -47,5 +48,10 @@ export default {
 </script>
 
 <style>
-
+#commentlist::placeholder {
+  color: grey;
+}
+#commentlistbtn {
+  padding: 5px 5px;
+}
 </style>
