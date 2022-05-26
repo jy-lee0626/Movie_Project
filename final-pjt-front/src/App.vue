@@ -12,20 +12,20 @@
         <i class="fas fa-arrow-up"></i>
       </button> -->
     </div>
-    <foo-ter></foo-ter>
+    <!-- <foo-ter></foo-ter> -->
   </div>
 </template>
 
 <script>
   // import './assets/js/up.js'
   import NavBar from '@/components/NavBar.vue'
-  import FooTer from '@/components/FooTer.vue'
+  // import FooTer from '@/components/FooTer.vue'
 
   import { mapActions } from 'vuex'
 
   export default {
     name: 'App',
-    components: { NavBar, FooTer },
+    components: { NavBar },
     methods: {
       ...mapActions(['fetchCurrentUser'])
     },
@@ -48,15 +48,8 @@
 
 #wrapper{
   height: auto;
-  min-height: 100vh;
-  /* padding-bottom: 96px; */
-}
-
-#btn-back-to-top {
-position: fixed;
-bottom: 20px;
-right: 20px;
-display: none;
+  min-height: 100%;
+  padding-bottom: 20rem;
 }
 
 nav {

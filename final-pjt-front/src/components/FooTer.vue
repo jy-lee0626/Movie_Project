@@ -53,7 +53,7 @@ export default {
 
 <style>
 .footer{
-  height: 96px;
+  height: 100%;
   position : relative;
   /* transform : translateY(-100%); */
 }

@@ -9,15 +9,48 @@
   <span v-if="!isEditing" class="mx-3" style="font-weight: initial;">{{ payload.content }}</span>
   <span v-if="!isEditing" class="mx-3" id="comment_rank">{{ payload.rank }} 점</span>
 
-  <span v-if="isEditing">
-    <p>test</p>
-    <input type="number" v-model="payload.rank">
-    <input type="text" v-model="payload.content">
-    <button @click="onUpdate">Update</button>
+  <span v-if="isEditing" class="d-flex align-items-start">
+    <!-- <input type="number" v-model="payload.rank"> -->
+    <input type="text" v-model="payload.content" 
+      style="margin-right: 3rem; margin-left: 3rem;">
+    <form class="rating edit_form_rank">
+        <label>
+          <input type="radio" name="stars" value="1" v-model="payload.rank"/>
+          <span class="icon">★</span>
+        </label>
+        <label>
+          <input type="radio" name="stars" value="2" v-model="payload.rank"/>
+          <span class="icon">★</span>
+          <span class="icon">★</span>
+        </label>
+        <label>
+          <input type="radio" name="stars" value="3" v-model="payload.rank"/>
+          <span class="icon">★</span>
+          <span class="icon">★</span>
+          <span class="icon">★</span>   
+        </label>
+        <label>
+          <input type="radio" name="stars" value="4" v-model="payload.rank"/>
+          <span class="icon">★</span>
+          <span class="icon">★</span>
+          <span class="icon">★</span>
+          <span class="icon">★</span>
+        </label>
+        <label>
+          <input type="radio" name="stars" value="5" v-model="payload.rank"/>
+          <span class="icon">★</span>
+          <span class="icon">★</span>
+          <span class="icon">★</span>
+          <span class="icon">★</span>
+          <span class="icon">★</span>
+        </label>
+      </form>
+    
+    <button @click="onUpdate" type="button" class="btn btn-success mx-3">Update</button>
     <!-- <button @click="switchIsEditing">Cancel</button> -->
   </span>
   <span v-if="currentUser.username === comment.user.username && !isEditing">
-    <button type="button" class="btn btn-info" style="margin-right: 1rem;" @click="switchIsEditing">Edit</button>
+    <button @click="switchIsEditing" type="button" class="btn btn-info" style="margin-right: 1rem;">Edit</button>
     <button @click="deleteComment(payload)" class="btn btn-danger">Delete</button>
   </span>
 </li>
