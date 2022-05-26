@@ -1,9 +1,10 @@
 <template>
 
-<li class="movie-comment-item d-flex justify-content-start">
+<li class="movie-comment-item d-flex justify-content-start" style="margin-left: 3rem;">
   <router-link 
   :to="{ name: 'profile', params: { username: comment.user.username } }"
   style="text-decoration: none; color: white; font-weight: bold; margin-right: 1rem;">
+  <img :src="`${currentUser.profile_image}`" alt="" class="profile_image"  style="width: 30px; margin-bottom: 0.4rem; margin-right: 0.2rem;">
   {{ comment.user.first_name }}
   </router-link>:
   <span v-if="!isEditing" class="mx-3" style="font-weight: initial;">{{ payload.content }}</span>

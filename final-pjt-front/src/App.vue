@@ -1,9 +1,8 @@
 <template>
   <div id="app">
-    <div id="wrapper">
-      <nav-bar></nav-bar>
-      <br/>
-      <router-view :key="$route.fullPath"></router-view>
+    <nav-bar></nav-bar>
+    <br/>
+    <router-view :key="$route.fullPath"></router-view>
       <!-- <button
         type="button"
         class="btn btn-danger btn-floating btn-lg"
@@ -11,7 +10,6 @@
         >
         <i class="fas fa-arrow-up"></i>
       </button> -->
-    </div>
     <!-- <foo-ter></foo-ter> -->
   </div>
 </template>
