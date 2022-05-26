@@ -42,18 +42,20 @@
                 <!-- <button class="btn btn-link" style="color: white;" @click="likeMovie(movieNum)" >
                   <i class="fas fa-heart fa-2x heart"></i>
                 </button> -->
-                <button class="btn btn-link" style="color: white;" @click="likeMovie(movieNum)" >
-                    {{ likeCount }} likes
-                </button>
+                    {{ likeCount }} 명이 이 영화를 좋아합니다.
+
               </p>
-          <div v-for="like in movieDetail.movie_like" :key="like.username">
-            <button v-if="currentUser.username === like.username" class="btn btn-link" style="color: crimson;" @click="likeMovie(movieNum)" >
-              <i class="fas fa-heart fa-2x heart"></i>
-            </button>
-            <!-- <button v-else class="btn btn-link" style="color: crimson;" @click="likeMovie(movieNum)" >
-              <i class="fas fa-heart fa-2x heart"></i>
-            </button> -->
-          </div>
+              <!-- <p v-if="liked">좋아요했음</p>
+              <p v-else>좋아요안했음</p> -->
+              
+              <button v-if="liked" class="btn btn-link" style="color: crimson;" @click="likeMovie(movieNum)" >
+                <i class="fa-2x fa-solid fa-heart"></i>
+              </button>
+              <button v-else class="btn btn-link" style="color: crimson;" @click="likeMovie(movieNum)">
+                <i class="fa-2x fa-regular fa-heart"></i>
+              </button>
+
+          
             </div>
           </div>
           <!-- --- 실패 -->
@@ -84,6 +86,7 @@
 
 <script>
 import MovieCommentList from '@/components/movies/MovieCommentList.vue'
+// import _ from 'lodash'
 
 import { mapActions, mapGetters } from 'vuex'
 
@@ -112,9 +115,16 @@ export default {
     likeCount() {
       return this.movieDetail.like_count
     },
+    liked() {
+      const array = [];
+      for(var i in this.movieDetail.movie_like) {
+        array.push(Object.values(this.movieDetail.movie_like)[i].username);
+      }
+      return array.includes(this.currentUser.username)
+    }
   },
   methods: {
-    ...mapActions(['fetchMovieDetail', 'likeMovie', 'searchYoutube'])
+    ...mapActions(['fetchMovieDetail', 'likeMovie', 'searchYoutube']),
   },
   created() {
     this.fetchMovieDetail(this.movieNum)
