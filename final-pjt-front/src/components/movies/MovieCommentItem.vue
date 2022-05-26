@@ -7,6 +7,7 @@
   <span  v-if="!isEditing">rank: {{ payload.rank }}</span>
 
   <span v-if="isEditing">
+    <input type="number" v-model="payload.rank">
     <input type="text" v-model="payload.content">
     <button @click="onUpdate">Update</button>
     <button @click="switchIsEditing">Cancel</button>
