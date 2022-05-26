@@ -8,6 +8,7 @@
       </small>
     </h1>
     <h2>작성한 글</h2>
+    <hr>
       <p v-if="!profile.review_set.length">
         작성한 글이 없습니다.
       </p>

@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="d-flex justify-content-between">
         <div>
-          <h1 class="m-4 text-left"> {{ review.title }}</h1>
+          <h1 class="text-left"> {{ review.title }}</h1>
           <p class="review_time">
             {{review.created_at|formatDate }} 작성됨 
             <br>
@@ -25,9 +25,9 @@
       <hr>
       <div v-if="isAuthor">
         <router-link :to="{ name: 'EditReview', params: { reviewNum } }">
-          <button class="btn btn-sm btn-secondary mx-1 my-2">수정</button>
+          <button class="btn btn-sm btn-outline-success mx-1 my-2">수정</button>
         </router-link>
-        <button class="btn btn-sm btn-secondary mx-1 my-2" @click="deleteReview(reviewNum)">삭제</button>
+        <button class="btn btn-sm btn-outline-danger mx-1 my-2" @click="deleteReview(reviewNum)">삭제</button>
       </div>
       
       <div class="my-3">
@@ -113,6 +113,7 @@
   text-align: left; 
   font-size: 0.8rem; 
   line-height: 1.8;
+  padding: 0.3rem;
 }
 
 .content_box {

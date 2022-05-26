@@ -4,7 +4,7 @@
   <router-link 
   :to="{ name: 'profile', params: { username: comment.user.username } }"
   style="text-decoration: none; color: white; font-weight: bold; margin-right: 1rem;">
-  <img :src="`${currentUser.profile_image}`" alt="" class="profile_image"  style="width: 30px; margin-bottom: 0.4rem; margin-right: 0.2rem;">
+  <img :src="`http://localhost:8000${comment.user.profile_image}`" alt="" class="profile_image"  style="width: 30px; margin-bottom: 0.4rem; margin-right: 0.2rem;">
   {{ comment.user.first_name }}
   </router-link>:
   <span v-if="!isEditing" class="mx-3" style="font-weight: initial;">{{ payload.content }}</span>
@@ -15,8 +15,6 @@
     <span v-show="payload.rank === 4" class="icon" style="color: yellow;">★★★★</span>
     <span v-show="payload.rank === 5" class="icon" style="color: yellow;">★★★★★</span>
   </span>
-  
-
   <span v-if="isEditing" class="d-flex align-items-start">
     <!-- <input type="number" v-model="payload.rank"> -->
     <input type="text" v-model="payload.content" 

@@ -12,8 +12,8 @@
         </router-link>
 
         <span 
-        style="position: absolute; bottom: 1rem; right: 2rem">
-          {{ review.created_at | maxlength(19) }}
+        style="position: absolute; bottom: 1rem; right: 5rem">
+          {{ review.created_at | formatDate }}
         </span>
         <hr>
       </li>
@@ -23,6 +23,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import moment from 'moment'
 
 export default {
   name: "ReviewList",
@@ -30,15 +31,13 @@ export default {
     ...mapGetters(['reviewlist']),
   },
   filters: {
-  maxlength: function (value, size) {
-  if (!value) return '';
-  value = value.toString();
-
-  if (value.length <= size) {
-    return value;
-  }
-  return value.substr(0, size);
-  }},
+    formatDate (value) {
+      console.log(value)
+      if (value) {
+        return moment(String(value)).format('MM/DD/YYYY hh:mm')
+      }
+    },
+  },
   methods: {
     ...mapActions(['fetchReviews',])
   },
