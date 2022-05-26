@@ -1,7 +1,7 @@
 <template>
   <li>
     <router-link :to="{ name: 'profile', params: { username: comment.user.username } }">
-      {{ comment.user.username }}
+      {{ comment.user.first_name }}
     </router-link>: 
     <span v-if="!isEditing">{{ payload.content }}</span>
     <span v-if="isEditing">

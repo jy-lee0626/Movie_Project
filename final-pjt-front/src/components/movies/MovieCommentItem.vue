@@ -1,9 +1,10 @@
 <template>
+
 <li class="movie-comment-item d-flex justify-content-start">
   <router-link 
   :to="{ name: 'profile', params: { username: comment.user.username } }"
   style="text-decoration: none; color: white; font-weight: bold; margin-right: 1rem;">
-  {{ comment.user.username }}
+  {{ comment.user.first_name }}
   </router-link>:
   <span v-if="!isEditing" class="mx-3" style="font-weight: initial;">{{ payload.content }}</span>
   <span v-if="!isEditing" class="mx-3" id="comment_rank">{{ payload.rank }} 점</span>
