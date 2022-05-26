@@ -1,10 +1,13 @@
 <template>
-<li class="movie-comment-item">
-  <router-link :to="{ name: 'profile', params: { username: comment.user.username } }">
+
+<li class="movie-comment-item d-flex justify-content-start">
+  <router-link 
+  :to="{ name: 'profile', params: { username: comment.user.username } }"
+  style="text-decoration: none; color: white; font-weight: bold; margin-right: 1rem;">
   {{ comment.user.first_name }}
   </router-link>:
-  <span  v-if="!isEditing">comment: {{ payload.content }}</span>
-  <span  v-if="!isEditing">rank: {{ payload.rank }}</span>
+  <span v-if="!isEditing" class="mx-3" style="font-weight: initial;">{{ payload.content }}</span>
+  <span v-if="!isEditing" class="mx-3" id="comment_rank">{{ payload.rank }} 점</span>
 
   <span v-if="isEditing">
     <p>test</p>
@@ -14,8 +17,8 @@
     <!-- <button @click="switchIsEditing">Cancel</button> -->
   </span>
   <span v-if="currentUser.username === comment.user.username && !isEditing">
-    <button @click="switchIsEditing">Edit</button>
-    <button @click="deleteComment(payload)">Delete</button>
+    <button type="button" class="btn btn-info" style="margin-right: 1rem;" @click="switchIsEditing">Edit</button>
+    <button @click="deleteComment(payload)" class="btn btn-danger">Delete</button>
   </span>
 </li>
 </template>
@@ -54,5 +57,17 @@ export default {
 </script>
 
 <style>
+.movie-comment-item {
+  list-style-type: none;
+  font-size: 1.5rem;
+  height: 100%;
+  width: 50rem;
+}
+#comment_rank {
+  border: 0.1rem;
+  text-emphasis-color: yellow;
+  /* border-block-style: solid;
+  border-block-color: white; */
+}
 
 </style>

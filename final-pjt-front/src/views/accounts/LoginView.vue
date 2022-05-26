@@ -54,7 +54,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #05040e;
+    background-color: #070619;
 }
 .background_login{
     width: 430px;
