@@ -125,13 +125,13 @@ body {
 
 .text_css_l {
   transition: transform 150ms ease-in-out;
-  padding: 0.2rem 0.3rem 0 0rem;
-  font-size: 1.5rem;
+  padding: 0.1rem 0.3rem 0.4rem 0.1rem;
+  font-size: 2.7rem;
 }
 .text_css_r {
   transition: transform 150ms ease-in-out;
-  padding: 0.2rem 0 0rem 0.3rem;
-  font-size: 1.5rem;
+  padding: 0.1rem 0.1rem 0.4rem 0.3rem;
+  font-size: 2.7rem;
 }
 
 .handle:hover .text,
