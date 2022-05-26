@@ -140,6 +140,7 @@ export default {
       })
       .then(res => {
         commit('SET_MOVIE_COMMENTS', res.data)
+        history.go(0)
       })
       .catch(err => console.error(err.response))
     },
@@ -154,7 +155,7 @@ export default {
         })
         .then(res => {
           commit('SET_MOVIE_COMMENTS', res.data)
-          history.go(0)
+          // history.go(0)
         })
         .catch(err => console.error(err.response))
       }
