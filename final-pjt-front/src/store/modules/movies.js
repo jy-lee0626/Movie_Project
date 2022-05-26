@@ -38,7 +38,7 @@ export default {
     SET_TVSHOW: (state, tvshow) => state.tvshow = tvshow,
     SET_MOVIEDETAIL: (state, moviedetail) => state.moviedetail = moviedetail,
     SET_SEARCHDATA: (state, searchdata) => state.searchdata = searchdata,
-    SET_MOVIE_COMMENTS: (state, createmoviecomment) => (state.moviedetail.createmoviecomment = createmoviecomment),
+    SET_MOVIE_COMMENTS: (state, moviecomments) => (state.moviedetail.comments = moviecomments),
     SEARCH_YOUTUBE: function (state, res) {
       state.youtubeVideos = res.data.items
     },
