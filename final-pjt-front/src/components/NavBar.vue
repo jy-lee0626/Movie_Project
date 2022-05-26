@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg sticky-top navbar-dark" style="background-color: black;">
+  <nav class="navbar navbar-expand-lg sticky-top navbar-dark" style="background-color: #16122e;">
     <div class="container-fluid">
-      <router-link class="navbar-brand" style="color: pink;" :to="{ name: 'MovieListView' }">Navbar</router-link>
+      <router-link class="navbar-brand" style="color: pink;" :to="{ name: 'MovieListView' }">MJYC</router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -95,7 +95,9 @@
   margin: 0.8rem 0.5rem 0 0;
 }
 .search_button {
-  background-color: black;
+  background-color: #16122e;
+  border: 0;
+  margin: 3px;
 }
 .search_form {
   margin-right: 0.5rem;

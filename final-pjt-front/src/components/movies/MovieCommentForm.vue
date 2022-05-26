@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form class="d-flex justify-content-center align-items-end" @submit.prevent="onSubmit">
+    <form class="d-flex justify-content-center align-items-end" @submit.prevent="onSubmit" style="padding-bottom: 3rem;">
       <!-- <label for="comment">comment: </label> -->
       <input class="comment_input" type="text" id="comment" placeholder="댓글을 남겨주세요" v-model="content" required>
       <!-- <input type="number" step="0.5" v-model="rank"> -->

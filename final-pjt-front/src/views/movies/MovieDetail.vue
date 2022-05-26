@@ -34,52 +34,26 @@
             </div>
             <hr>
             <div class="movie-detail-overview-body">
-              {{ movieDetail.overview | maxlength(710) }}
+              {{ movieDetail.overview | maxlength(760) }}
             </div>
             <div>
               <hr>
               <p>
-                <!-- <button class="btn btn-link" style="color: white;" @click="likeMovie(movieNum)" >
-                  <i class="fas fa-heart fa-2x heart"></i>
-                </button> -->
-                    {{ likeCount }} 명이 이 영화를 좋아합니다.
-
+                <button v-if="liked" class="btn btn-link" style="color: crimson;" @click="likeMovie(movieNum)" >
+                  <i class="fa-2x fa-solid fa-heart"></i>
+                </button>
+                <button v-else class="btn btn-link" style="color: crimson;" @click="likeMovie(movieNum)">
+                  <i class="fa-2x fa-regular fa-heart"></i>
+                </button>
+                {{ likeCount }} 명이 이 영화를 좋아합니다.
               </p>
-              <!-- <p v-if="liked">좋아요했음</p>
-              <p v-else>좋아요안했음</p> -->
-              
-              <button v-if="liked" class="btn btn-link" style="color: crimson;" @click="likeMovie(movieNum)" >
-                <i class="fa-2x fa-solid fa-heart"></i>
-              </button>
-              <button v-else class="btn btn-link" style="color: crimson;" @click="likeMovie(movieNum)">
-                <i class="fa-2x fa-regular fa-heart"></i>
-              </button>
-
-          
             </div>
           </div>
-          <!-- --- 실패 -->
-              <!-- <div v-for="like in movieDetail.movie_like" :key="like.username">
-                <button v-if="currentUser.username === like.username" class="btn btn-link" style="color: crimson;" @click="likeMovie(movieNum)" >
-                  <i class="fas fa-heart fa-2x heart"></i>
-                </button>
-                <button v-else class="btn btn-link" style="color: white;" @click="likeMovie(movieNum)" >
-                  <i class="fas fa-heart fa-2x heart"></i>
-                </button>
-                <span>
-                    {{ likeCount }} likes
-                </span>
-              </div>
-            =============== -->
-          <!-- <div v-if="currentUser.username in movieDetail.movie_like">True</div> -->
           <div class="movie-detail-lower">
           </div>
         </div>
       </div>
     </div>
-  <!-- --- -->
-    <!-- <movie-comment-form></movie-comment-form>
-    <movie-comment-item></movie-comment-item> -->
     <movie-comment-list :comments="movieDetail.comments" :moviedetail="movieDetail"></movie-comment-list>
   </div>
 </template>

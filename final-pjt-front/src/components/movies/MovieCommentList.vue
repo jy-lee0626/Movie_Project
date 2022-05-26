@@ -1,6 +1,6 @@
 <template>
   <div class="movie-comment-list">
-    <h2>CommentList</h2>
+    <hr>
     <movie-comment-form :moviedetail="moviedetail"></movie-comment-form>
     <ul>
       <movie-comment-item
