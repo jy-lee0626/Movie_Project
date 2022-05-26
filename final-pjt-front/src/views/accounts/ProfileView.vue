@@ -1,6 +1,5 @@
 <template>
   <div>
-    
     <img :src="`${profile.profile_image}`" class="profile_image" alt="profile_image" style="width: 300px; ">
     <h1>{{ profile.first_name }}
       <br>
@@ -8,23 +7,22 @@
         {{profile.username}}
       </small>
     </h1>
-
     <h2>작성한 글</h2>
-      <p v-if="profile.review_set===[]">
+      <p v-if="!profile.review_set.length">
+        작성한 글이 없습니다.
+      </p>
+      <p v-else>
         <ul>
-          <li v-for="article in profile.articles" :key="article.pk">
-            <router-link :to="{ name: 'article', params: { articlePk: article.pk } }">
-              {{ article.title }}
+          <li v-for="review in profile.review_set" :key="review.id">
+            <router-link :to="{ name: 'ReviewDetail', params: { reviewNum: review.id } }">
+              {{ review.title }}
             </router-link>
           </li>
         </ul> 
       </p>
-      <p v-else>
-        작성한 글이 없습니다.
-      </p>
     <hr>
     <h2>좋아요 한 영화</h2>
-      <p v-if="profile.like_movies===[]">
+      <p v-if="!profile.like_movies.length">
         재미있게 본 영화를 추천해주세요
         
       </p>
@@ -65,7 +63,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['profile', 'recommendUser', 'currentUser'])
+    ...mapGetters(['profile', 'recommendUser', 'currentUser']),
   },
   methods: {
     ...mapActions(['fetchProfile', 'fetchRecommendUser']),
