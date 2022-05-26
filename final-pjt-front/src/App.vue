@@ -1,19 +1,31 @@
 <template>
   <div id="app">
-    <nav-bar></nav-bar>
-    <br/>
-    <router-view :key="$route.fullPath"></router-view>
+    <div id="wrapper">
+      <nav-bar></nav-bar>
+      <br/>
+      <router-view :key="$route.fullPath"></router-view>
+      <!-- <button
+        type="button"
+        class="btn btn-danger btn-floating btn-lg"
+        id="btn-back-to-top"
+        >
+        <i class="fas fa-arrow-up"></i>
+      </button> -->
+    </div>
+    <foo-ter></foo-ter>
   </div>
 </template>
 
 <script>
+  // import './assets/js/up.js'
   import NavBar from '@/components/NavBar.vue'
+  import FooTer from '@/components/FooTer.vue'
 
   import { mapActions } from 'vuex'
 
   export default {
     name: 'App',
-    components: { NavBar },
+    components: { NavBar, FooTer },
     methods: {
       ...mapActions(['fetchCurrentUser'])
     },
@@ -34,6 +46,19 @@
   color: #fff;
 }
 
+#wrapper{
+  height: auto;
+  min-height: 100vh;
+  /* padding-bottom: 96px; */
+}
+
+#btn-back-to-top {
+position: fixed;
+bottom: 20px;
+right: 20px;
+display: none;
+}
+
 nav {
   padding: 30px;
 }
@@ -47,11 +72,6 @@ nav a.router-link-exact-active {
   color: #42b983;
 }
 
-
-body {
-  /* background-color: rgba(250,227,217,1); */
-  background-color: black;
-}
 .profile_image {
   border-radius: 50%;
 }
