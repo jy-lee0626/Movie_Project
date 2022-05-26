@@ -11,8 +11,8 @@
           </p>
         </div>
         <div class="review_user">
-          <img link :src="`http://localhost:8000${review.user.profile_image}`" alt="profile_image" class="profile_image" style="width: 100px;"><br>
-          {{review.user.username}}
+          <img link :src="`http://localhost:8000${review.user.profile_image}`" alt="profile_image" class="profile_image mb-2" style="width: 100px;"><br>
+          {{review.user.first_name}}
         </div>
       </div>
       <hr>
@@ -30,7 +30,7 @@
         </router-link>
         <button class="btn btn-sm btn-secondary mx-1 my-2" @click="deleteReview(reviewNum)">삭제</button>
       </div>
-
+      
       <div class="my-3">
         <button v-if="liked" class="btn btn-link" style="color: crimson;" @click="likeReview(reviewNum)" >
           <i class="fa-2x fa-solid fa-heart"></i>
@@ -64,9 +64,16 @@
       }
     },
     computed: {
-      ...mapGetters(['isAuthor', 'review']),
+      ...mapGetters(['isAuthor', 'review', 'currentUser']),
       likeCount() {
         return this.review.like_users?.length
+      },
+      liked() {
+        const array = [];
+        for(var i in this.review.like_users) {
+          array.push(Object.values(this.review.like_users)[i].username);
+        }
+        return array.includes(this.currentUser.username)
       }
     },
     filters: {

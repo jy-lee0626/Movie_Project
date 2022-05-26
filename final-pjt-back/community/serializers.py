@@ -30,6 +30,7 @@ class ReviewSerializer(serializers.ModelSerializer):
     
     comment_set = CommentSerializer(many=True)
     user = UserSerializer()
+    like_users = UserSerializer(many=True)
 
     class Meta: 
         model = Review
