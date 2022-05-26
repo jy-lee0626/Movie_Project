@@ -3,17 +3,18 @@
   <router-link :to="{ name: 'profile', params: { username: comment.user.username } }">
   {{ comment.user.username }}
   </router-link>:
-  <span v-if="!isEditing">{{ payload.content }}</span>
+  <span v-if="!isEditing">rank: {{ payload.rank }}</span>
+  <span v-if="!isEditing">comment: {{ payload.content }}</span>
 
   <span v-if="isEditing">
     <input type="text" v-model="payload.content">
     <button @click="onUpdate">Update</button>
     <button @click="switchIsEditing">Cancel</button>
   </span>
-  <div>{{ currentUser }}</div>
+  <!-- <div>{{ currentUser }}</div> -->
   <span v-if="currentUser.username === comment.user.username && !isEditing">
     <button @click="switchIsEditing">Edit</button>
-    <button @click="deleteComment(payload)">Edit</button>
+    <button @click="deleteComment(payload)">Delete</button>
   </span>
 </li>
 </template>
@@ -29,8 +30,9 @@ export default {
       isEditing: false,
       payload: {
         movieNum: this.moviedetail.movie_num,
-        commentPk: this.comment.pk,
-        content: this.comment.content
+        commentPk: this.comment.id,
+        content: this.comment.content,
+        rank: this.comment.rank,
       },
     }
   },

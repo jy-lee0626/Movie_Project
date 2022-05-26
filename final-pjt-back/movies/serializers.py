@@ -13,6 +13,22 @@ class MovieListSerializer(serializers.ModelSerializer):
 
 
 
+# 영화코멘트입력
+class MovieCommentSerializer(serializers.ModelSerializer):
+
+    class UserSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = User
+            fields = ('username', 'first_name', 'gender', 'pk')
+
+    user = UserSerializer()
+
+    class Meta:
+        model = MovieComment
+        fields = '__all__'
+
+
+
 # 영화상세정보
 class MovieSerializer(serializers.ModelSerializer):
 
@@ -20,22 +36,10 @@ class MovieSerializer(serializers.ModelSerializer):
         class Meta:
             model = User
             fields = ('username', 'first_name', 'gender', 'profile_image')
+
     movie_like = UserSerializer(many=True)
+    comments = MovieCommentSerializer(many=True)
+
     class Meta:
         model = Movie
-        fields = '__all__'
-
-
-
-# 영화코멘트입력
-class MovieCommentSerializer(serializers.ModelSerializer):
-
-    # class UserSerializer(serializers.ModelSerializer):
-    #     class Meta:
-    #         model = User
-    #         fields = '__all__'
-
-
-    class Meta:
-        model = MovieComment
         fields = '__all__'
