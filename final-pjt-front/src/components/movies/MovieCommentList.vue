@@ -3,14 +3,14 @@
     <hr>
     <movie-comment-form :moviedetail="moviedetail"></movie-comment-form>
     <div class="d-flex justify-content-center m-2" id="comment_list_2">
-      <ul class="comment_list">
+      <div class="comment_list">
         <movie-comment-item
         v-for="comment in comments"
         :comment="comment"
         :key="comment.pk"
         :moviedetail="moviedetail">
         </movie-comment-item>
-      </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -32,9 +32,12 @@ export default {
   justify-content: space-between;
   align-items: center;
   height: 4rem;
-  width: 50rem;
+  width: 70rem;
 }
 #comment_list_2 {
   height: auto;
+}
+.movie-comment-list {
+  height: 100%;
 }
 </style>

@@ -132,8 +132,8 @@ export default {
   flex-flow: column nowrap;
   justify-content: center;
   padding: 2rem;
-  min-height: 100%;
-  height: auto;
+  /* min-height: 100%; */
+  /* height: auto; */
 }
 
 /* .movie-detail-toolbar {
