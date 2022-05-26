@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="container" style="height: 6rem; padding: 0rem;">
+    <div class="container" style="padding: 0rem;">
     <div class="px-4 d-flex justify-content-between">
       <router-link :to="{ name: 'profile', params: { username: comment.user.username } }" class="text-decoration-none mx-4 w-25 d-flex" style="color: #fff;">
         <img :src="`http://localhost:8000${comment.user.profile_image}`" class="profile_image img-fluid " alt="profile_image" style="width: 3rem; height: 3rem; margin: 0.5rem; margin-left: 0.8rem;">
         <div class="align-self-center m-auto">
-          {{currentUser.first_name}}
+          {{comment.user.first_name}}
         </div>
       </router-link>
 

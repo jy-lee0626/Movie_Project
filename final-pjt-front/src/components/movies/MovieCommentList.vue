@@ -31,13 +31,13 @@ export default {
   /* display: inline; */
   justify-content: space-between;
   align-items: center;
-  height: 4rem;
+  /* height: 4rem; */
   width: 70rem;
 }
-#comment_list_2 {
+/* #comment_list_2 {
   height: auto;
-}
-.movie-comment-list {
+} */
+/* .movie-comment-list {
   height: 100%;
-}
+} */
 </style>
