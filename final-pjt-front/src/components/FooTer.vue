@@ -5,7 +5,7 @@
       <!-- Section: Social media -->
       <section
         class="d-flex justify-content-center justify-content-lg-between"
-        style="padding: 3rem 1rem 0 1rem;"
+        style="padding: 8rem 1rem 0 1rem;"
       >
         <!-- Left -->
         <div class="me-5">
