@@ -12,8 +12,15 @@
           </p>
         </div>
         <div class="review_user">
-          <img link :src="`http://localhost:8000${review.user.profile_image}`" alt="profile_image" class="profile_image mb-2" style="width: 100px;"><br>
-          {{review.user.first_name}}
+          <router-link :to="{ name: 'profile', params: { username: review.user.username } }" class="text-decoration-none mx-4 text-center align-items-center" style="color: #fff;">
+            <div>
+              <img link :src="`http://localhost:8000${review.user.profile_image}`" alt="profile_image" class="profile_image mb-2 mx-auto" style="width: 100px;"><br>
+
+            </div>
+            <p >
+              {{review.user.first_name}}
+            </p>
+          </router-link>
         </div>
       </div>
       <hr>
@@ -104,6 +111,7 @@
   justify-content: center;
   padding: 2rem;
   width: 80%;
+  max-width: 1000px;
   min-height: 100%;
   margin: auto;
   height: auto;
