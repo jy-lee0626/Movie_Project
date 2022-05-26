@@ -41,18 +41,18 @@ export default {
 </script>
 
 <style>
-*, *::after, *::before {
+/* *, *::after, *::before {
   box-sizing: border-box;
-}
+} */
 
 :root {
   --handle-size: 3rem;
   --img-gap: .25rem;
 }
 
-body {
+/* body {
   margin: 0;
-}
+} */
 
 .container_css {
   display: flex;
