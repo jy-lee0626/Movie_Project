@@ -23,11 +23,11 @@
 
       <div class="form-check form-check-inline mt-4">
         <input v-model="credentials.gender" class="form-check-input" type="radio" name="Male" id="Male" value="Male">
-        <label class="form-check-label" for="Male">남자</label>
+        <label class="form-check-label" for="Male">Male</label>
       </div>
       <div class="form-check form-check-inline">
         <input v-model="credentials.gender" class="form-check-input" type="radio" name="Female" id="Female" value="Female">
-        <label class="form-check-label" for="Female">여자</label>
+        <label class="form-check-label" for="Female">Female</label>
       </div>
 
 

@@ -1,6 +1,7 @@
 <template>
   <div class="movie-comment-list">
     <h2>CommentList</h2>
+    <movie-comment-form :moviedetail="moviedetail"></movie-comment-form>
     <ul>
       <movie-comment-item
       v-for="comment in comments"
@@ -9,7 +10,6 @@
       :moviedetail="moviedetail">
       </movie-comment-item>
     </ul>
-    <movie-comment-form :moviedetail="moviedetail"></movie-comment-form>
   </div>
 </template>
 
