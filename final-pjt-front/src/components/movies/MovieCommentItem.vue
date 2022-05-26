@@ -9,11 +9,11 @@
   </router-link>:
   <span v-if="!isEditing" class="mx-3" style="font-weight: initial;">{{ payload.content }}</span>
   <span v-if="!isEditing" class="mx-3" id="comment_rank">
-    <span v-if="payload.rank === 1" class="icon" style="color: yellow;">★</span>
-    <span v-if="payload.rank === 2" class="icon" style="color: yellow;">★★</span>
-    <span v-if="payload.rank === 3" class="icon" style="color: yellow;">★★★</span>
-    <span v-if="payload.rank === 4" class="icon" style="color: yellow;">★★★★</span>
-    <span v-if="payload.rank === 5" class="icon" style="color: yellow;">★★★★★</span>
+    <span v-show="payload.rank === 1" class="icon" style="color: yellow;">★</span>
+    <span v-show="payload.rank === 2" class="icon" style="color: yellow;">★★</span>
+    <span v-show="payload.rank === 3" class="icon" style="color: yellow;">★★★</span>
+    <span v-show="payload.rank === 4" class="icon" style="color: yellow;">★★★★</span>
+    <span v-show="payload.rank === 5" class="icon" style="color: yellow;">★★★★★</span>
   </span>
   
 
