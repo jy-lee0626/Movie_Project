@@ -101,7 +101,7 @@ export default {
 .movie-comment-item {
   list-style-type: none;
   font-size: 1.5rem;
-  height: 100%;
+  /* height: 100%; */
 }
 #comment_rank {
   border: 0.1rem;

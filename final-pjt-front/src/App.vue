@@ -10,20 +10,20 @@
         >
         <i class="fas fa-arrow-up"></i>
       </button> -->
-    <!-- <foo-ter></foo-ter> -->
+    <foo-ter></foo-ter>
   </div>
 </template>
 
 <script>
   // import './assets/js/up.js'
   import NavBar from '@/components/NavBar.vue'
-  // import FooTer from '@/components/FooTer.vue'
+  import FooTer from '@/components/FooTer.vue'
 
   import { mapActions } from 'vuex'
 
   export default {
     name: 'App',
-    components: { NavBar, },
+    components: { NavBar, FooTer},
     methods: {
       ...mapActions(['fetchCurrentUser'])
     },
