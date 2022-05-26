@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3>Community</h3>
     <ReviewForm v-if="isReview" :review="review" action="update"/>
 
   </div>
@@ -26,4 +25,6 @@ import { mapGetters, mapActions } from 'vuex'
   }
 </script>
 
-<style></style>
+<style>
+
+</style>
