@@ -127,12 +127,14 @@ def comment_detail(request, movie_num, comment_pk):
 
     def update_comment():
         if request.user == comment.user:
-            serializer = MovieCommentSerializer(instance=comment, data=request.data)
-            if serializer.is_valid(raise_exception=True):
-                serializer.save()
-                comments = movie.comments.all()
-                serializer = MovieCommentSerializer(comments, many=True)
-                return Response(serializer.data)
+            # serializer = MovieCommentSerializer(instance=comment, data=request.data)
+            # serializer.save()
+            comment.content = request.data.get('content')
+            comment.rank = request.data.get('rank')
+            comment.save()
+            comments = movie.comments.all()
+            serializer = MovieCommentSerializer(comments, many=True)
+            return Response(serializer.data)
 
     def delete_comment():
         if request.user == comment.user:
@@ -157,7 +159,8 @@ def movie_comment(request, movie_num):
         content = request.data.get('content')
         comment = MovieComment(movie=movie, rank=rank, content=content, user=request.user, movie_num=movie_num)
         comment.save()
-        serializer = MovieCommentSerializer(comment)
+        comments = movie.comments.all()
+        serializer = MovieCommentSerializer(comments, many=True)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     elif request.method == 'GET':
         comments = MovieComment.objects.all().filter(movie_num=movie_num)

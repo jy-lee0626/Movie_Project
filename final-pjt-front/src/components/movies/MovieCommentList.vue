@@ -1,14 +1,14 @@
 <template>
   <div class="movie-comment-list">
     <h2>CommentList</h2>
-    <ul>
+    <div>
       <movie-comment-item
       v-for="comment in comments"
       :comment="comment"
       :key="comment.pk"
       :moviedetail="moviedetail">
       </movie-comment-item>
-    </ul>
+    </div>
     <movie-comment-form :moviedetail="moviedetail"></movie-comment-form>
   </div>
 </template>
