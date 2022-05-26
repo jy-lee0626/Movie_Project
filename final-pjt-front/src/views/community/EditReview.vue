@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Edit Review</h1>
+    <h3>Community</h3>
     <ReviewForm v-if="isReview" :review="review" action="update"/>
 
   </div>

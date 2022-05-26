@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>새 리뷰 작성</h1>
+    <h3>Community</h3>
     <ReviewForm :review="review" action="create" />
   </div>
 </template>
@@ -22,4 +22,6 @@
   }
 </script>
 
-<style></style>
+<style>
+
+</style>

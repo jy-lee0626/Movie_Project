@@ -1,17 +1,24 @@
 <template>
-  <form @submit.prevent="onSubmit">
-    <div>
-      <label for="title">title: </label>
-      <input v-model="newReview.title" type="text" id="title" />
+  <div class="review-form-card w-75">
+    <div class="container">
+      <form @submit.prevent="onSubmit">
+        <div class="d-flex ">
+          <div class="form-group container-fluid">
+            <input v-model="newReview.title" type="text" class="form-control bg-transparent text-white" id="title" :maxlength="50" placeholder="제목을 입력하세요">
+          </div>
+          <div class="align-items-center m-auto">
+            <button class="btn btn-primary align-self-center">{{ action }}</button>
+          </div>
+
+        </div>
+        <hr>
+        <div class="form-group">
+          <textarea type="textarea" v-model="newReview.content" class="form-control bg-transparent text-white" id="content" placeholder="내용을 입력하세요"></textarea>
+        </div>
+        
+      </form>
     </div>
-    <div>
-      <label for="content">contnet: </label>
-      <textarea v-model="newReview.content" type="text" id="content"></textarea>
-    </div>
-    <div>
-      <button>{{ action }}</button>
-    </div>
-  </form>
+  </div>
 </template>
 
 <script>
@@ -49,4 +56,29 @@ import { mapActions } from 'vuex'
   }
 </script>
 
-<style></style>
+<style scoped>
+
+  .review-form-card {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    padding: 2rem;
+    width: 80%;
+    min-height: 100%;
+    margin: auto;
+    height: auto;
+  }
+
+  #content {
+    height: 35rem;
+  }
+
+  input {
+    border: none;
+    font-size: 2rem;
+  }
+
+  textarea {
+    border: none;
+  }
+</style>

@@ -1,5 +1,6 @@
 <template>
   <div class="review-detail-card w-75">
+    <h3>Community</h3>
     <div class="container-fluid">
       <div class="d-flex justify-content-between">
         <div>
@@ -99,7 +100,6 @@
 
 <style>
 .review-detail-card {
-  font-family: 'Noto Sans KR', sans-serif;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
