@@ -4,6 +4,8 @@
 >
 > 김민지, 이주영, 최영찬
 
+https://mjyc.herokuapp.com/
+
 
 
 ## 팀원 정보 및 업무 분담 내역
